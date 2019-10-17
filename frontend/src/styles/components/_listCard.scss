@@ -1,0 +1,13 @@
+.listCard {
+  margin: var(--space-md);
+  border: 1px solid black;
+  width: 200px;
+
+  &-img{
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
