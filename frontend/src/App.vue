@@ -1,27 +1,18 @@
 <template>
   <div id="app">
     <div>
-      <router-link :to="{ name: 'Home' }">MainPage</router-link>
+      <nav>
+        <div>
+          <router-link :to="{ name: 'Home' }">SEMO</router-link>
+          <router-link :to="{ name: 'Home' }">사이트소개</router-link>
+          <router-link :to="{ name: 'Home' }">API 커테고리</router-link>
+          <router-link :to="{ name: 'Home' }">개발 일지</router-link>
+        </div>
+        <div>
+          <input type="text">
+        </div>
+      </nav>
       <router-view/>
-      <h2>로그인</h2>
-      <form @submit.prevent="login">
-        <p>
-          <label for="loginID">id</label>
-          <input v-model="name" type="text" id="loginID">
-        </p>
-        <p>
-          <label for="loginPW">pw</label>
-          <input v-model="pw" type="password" id="loginPW">
-        </p>
-        <button type="submit">submit</button>
-      </form>
-    </div>
-    <div>
-      input
-      <div>
-        <p>{{ name }}</p>
-        <p>{{ pw }}</p>
-      </div>
     </div>
   </div>
 </template>
@@ -49,12 +40,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
