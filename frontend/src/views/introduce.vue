@@ -1,6 +1,6 @@
 <template>
   <div>
-      Oo0ㅇ lIiㅣ 딹뷁
+    사이트 소개 페이지
   </div>
 </template>
 
