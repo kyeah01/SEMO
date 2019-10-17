@@ -1,0 +1,12 @@
+.signForm {
+  min-width: 400px;
+  min-height: 500px;
+  background-color: $white;
+  padding: var(--space-xs);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+  }
+}
