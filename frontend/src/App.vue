@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <div>
+      <router-link :to="{ name: 'Home' }">MainPage</router-link>
+      <router-view/>
       <h2>로그인</h2>
       <form @submit.prevent="login">
         <p>
@@ -25,6 +27,9 @@
 </template>
 
 <script>
+import router from "@/router";
+import api from "./api";
+
 export default {
   name: 'app',
   data() {
