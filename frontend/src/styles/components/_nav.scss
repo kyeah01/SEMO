@@ -1,0 +1,21 @@
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  top:0px;
+  background-color: $primary;
+  width: 1920px;
+
+  .nav-items {
+    display: flex;
+    justify-content: space-around;
+
+    width: 500px;
+  }
+  .nav-body {
+    display: flex;
+    justify-content: flex-end;
+
+    width: 300px;
+  }
+}
