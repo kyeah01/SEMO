@@ -2,20 +2,105 @@ nav {
   position: fixed;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   top:0px;
   background-color: $primary;
-  width: 1920px;
+  width: 100vw;
+  min-width: 1200px;
+  z-index: 999;
 
+  height: 80px;
+
+  a {
+    text-decoration: none;
+    color: $white;
+    font-size: 23px;
+  }
   .nav-items {
     display: flex;
     justify-content: space-around;
-
-    width: 500px;
+    min-width: 900px;
+    margin-left: var(--space-xxl);
   }
   .nav-body {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 
-    width: 300px;
+    &_icon {
+      font-size: 30px;
+    }
+
+    input {
+      padding: var(--space-sm);
+      font-size: 20px;
+      border-radius: var(--space-xs);
+      width: 300px;
+      background-color: $primary;
+      border:none;
+    }
+
+    input + .search-box {
+      display: flex;
+      position: relative;
+      right: 30px;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 40.5px;
+      background-color: $primary;
+      border: none;
+      border-radius: var(--space-xs);
+    }
+
+    input:focus {
+      width: 298px;
+      border: none;
+      background-color: white;
+    }
+
+    input:focus + .search-box {
+      display: flex;
+      position: relative;
+      top: 0.125px;
+      right: 29px;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 39.5px;
+      background-color: white;
+      border: 1px solid white;
+      border-radius: var(--space-xs);
+    }
   }
+}
+
+
+
+.fa-user {
+  margin-right: var(--space-md);
+  color: white;
+}
+
+.fa-user:hover {
+  cursor: pointer;
+}
+
+.fa-off {
+  margin-right: var(--space-md);
+  color: white;
+}
+
+.fa-off:hover {
+  cursor: pointer;
+}
+
+.profile-box {
+  position: fixed;
+  right: 0px;
+  top: 80px;
+  height: 150px;
+  width: 200px;
+  z-index: 999;
+  background-color: $white;
 }

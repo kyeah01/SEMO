@@ -10,15 +10,33 @@
         <label for="passwordConfirm">passwordConfirm</label>
         <input type="password" id="passwordConfirm">
 
-        <label for="Skill">Skill</label>
-        <input type="text" id="Skill">
+        <label for="occupation">occupation</label>
+        <select name="occupation" id="occupation">
+          <option value="1">개발자</option>
+          <option value="2">개발자</option>
+          <option value="3">개발자</option>
+          <option value="4">개발자</option>
+          <option value="5">개발자</option>
+          <option value="6">개발자</option>
+          <option value="7">개발자</option>
+        </select>
+        <span class="btn btn--primary" @click="toggle_Sign"  style="font-size: 20px; font-weight:500;">돌아가기</span>
     </form>
-    <span class="btn btn--success">돌아가기</span>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return{
+
+    }
+  },
+  methods: {
+    toggle_Sign() {
+      this.$emit("toggle_Sign")
+    }
+  }
 
 }
 </script>

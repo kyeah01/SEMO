@@ -7,6 +7,7 @@ module.exports = {
                     @import "@/styles/_spacing.scss";
                     @import "@/styles/_color.scss";
                     @import "@/styles/_btn.scss";
+                    @import "@/styles/_transition.scss";
                     @import "@/styles/components/_signform.scss";
                     @import "@/styles/components/_nav.scss";
                     @import "@/styles/components/_footer.scss";
