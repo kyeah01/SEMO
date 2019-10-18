@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # app list
     'api.apps.ApiConfig',
     'authsystem.apps.AuthsystemConfig',
+    # django log
+    'server_access_logs',
+    # framework
     'rest_framework',
     'drf_yasg',
 ]
@@ -51,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     # django log
+    'server_access_logs.logging_middleware.AccessLogsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -95,7 +101,34 @@ DATABASES = {
     }
 }
 
-
+# django log
+# file root setting
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'logFormat': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%Y-%m-%d %H:%M:%S"
+        },
+    },
+    # 핸들러
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'logFormat',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+    }
+}
+# endlog
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
