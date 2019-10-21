@@ -60,6 +60,28 @@
   background-color: $success;
   color: white;
 }
+@import url('https://fonts.googleapis.com/css?family=Roboto:500&display=swap');
+.btn--google {
+  display: flex;
+  justify-content: flex-start;
+  background-color:  #ffffff;
+  padding: 8px 0px;
+  font-family: 'Roboto';
+  color: black;
+  font-size: 22px;
+  border: 1px solid #b8b8b8;
+  height: 39px !important;
+}
+.btn--kakao {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #ffe812;
+  padding: 8px 0px;
+  font-family: 'Roboto';
+  color: black;
+  font-size: 22px;
+  height: 39px !important;
+}
 
 //   .btn--subtle {
 //     background-color: var(--color-contrast-low, hsl(240, 1%, 83%));

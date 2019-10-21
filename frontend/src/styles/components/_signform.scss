@@ -1,12 +1,50 @@
 .signForm {
+  position:  absolute;
+  top: 133px;
+  right: 100px;
+  margin-left: auto;
   min-width: 400px;
-  min-height: 500px;
-  background-color: $white;
-  padding: var(--space-xs);
+  min-height: 600px;
+  background-color: white;
+  padding: var(--space-lg);
+  border-radius: var(--radius-sm);
 
   form {
     display: flex;
     flex-direction: column;
     text-align: start;
+
+    input {
+      padding: var(--space-sm);
+      border: 1px solid $tertiary;
+      margin-bottom: var(--space-md);
+      font-size: 20px;
+    }
+
+    input:focus {
+      background-color: $primary-light;
+    }
+
+    label {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+      text-transform: capitalize;
+    }
+
+    select {
+      padding: var(--space-sm);
+      border: 1px solid $tertiary;
+      margin-bottom: var(--space-md);
+      font-size: 20px;
+    }
+
+    span {
+      height: 45px;
+    }
   }
+}
+
+.fa-search {
+  cursor: pointer;
 }
