@@ -3,15 +3,16 @@
     <Sidebar :PropData="developers"/>
     <div class="journal-contents">
       <div class="journal-contents_head">
-        <h2>journalPage</h2>
+        <h2>Journal Page</h2>
       </div>
+
       <div class="journal-contents_body">
         <table>
           <tr>
-            <th>a</th><th>a</th><th>s</th><th>s</th>
+            <th>Date</th><th>Title</th>
           </tr>
-          <tr>
-            <td>a</td><td>a</td><td>a</td><td>a</td>
+          <tr v-for=" i in 10" :key="i">
+            <td>{{i}}</td><td>a</td>
           </tr>
         </table>
       </div>
