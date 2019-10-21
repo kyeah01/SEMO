@@ -25,32 +25,21 @@
       <transition name="fade" mode="out-in">
         <router-view/>
       </transition>
-      <footer>
-        <div>
-          <p>Install</p>
-          <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took  a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also the leap into electronic typesetting,  remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing  Lorem Ipsum passages, and more recently  with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</div>
-        </div>
 
-        <div>
-          <p>Giude</p>
-          <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took  a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also the leap into electronic typesetting,  remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing  Lorem Ipsum passages, and more recently  with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</div>
-        </div>
-
-        <div>
-          <p>Category</p>
-          <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took  a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also the leap into electronic typesetting,  remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing  Lorem Ipsum passages, and more recently  with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</div>
-        </div>
-      </footer>
     </div>
   </div>
 </template>
 
 <script>
+
 import router from "@/router";
 import api from "./api";
 
 export default {
   name: 'app',
+  components: {
+
+  },
   data() {
     return {
       chk_search: false,
@@ -76,6 +65,6 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    padding-top: var(--space-xxl);
+    padding-top: var(--space-xxxl);
   }
 </style>

@@ -1,21 +1,6 @@
 <template>
   <div class="category">
-    <sidebar>
-      API LIST
-      <div class="separater"></div>
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </sidebar>
+    <Sidebar :PropData="ApiList"/>
     <div>
       <p>API Category</p>
       <div class="category-list">
@@ -29,10 +14,26 @@
 </template>
 
 <script>
+import Sidebar from "@/components/sidebar"
 import APIListCard from "@/components/category/APIListCard"
 export default {
   components: {
-    APIListCard
+    APIListCard, Sidebar
+  },
+  data() {
+    return {
+      ApiList : [
+        {title : 'API LIST'},
+        {subtitle : ''},
+        {name: '공공데이터'},
+        {name: '대중교통'},
+        {name: '음악'},
+        {name: '영화'},
+        {name: '사진'},
+        {name: '미디어'},
+        {name: '날씨'},
+      ]
+    }
   }
 }
 </script>

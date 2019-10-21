@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="test">
       <div class="main_header">
         <img class="main_header-img" src="https://uploads.actionvfx.com/header_photo/spina/article/222/6-Common-Nodes-for-Nuke-Beginners-Banner-compressor.jpg" alt="">
         <transition name="fade" mode="in-out">
@@ -12,15 +11,17 @@
         <p>Welcome home</p>
         <p>developers</p>
       </div>
-    </div>
+      <Footer/>
   </div>
 </template>
 
 <script>
+import Footer from "@/components/footer"
 import SignInForm from "@/components/signform/SignInForm"
 import SignUpForm from "@/components/signform/SignUpForm"
 export default {
   components: {
+    Footer,
     SignInForm,
     SignUpForm
   },

@@ -8,7 +8,7 @@
         <input type="password" id="password">
         <span class="btn btn--primary" @click="toggle_Sign" style="margin-bottom: var(--space-sm); font-size: 20px; font-weight:500;">로그인</span>
         <div class="separater"></div>
-        <span style="text-align: center;"> Or</span>
+        <span style="text-align: center; font-weight:700;"> Or</span>
         <span class="btn btn--google" style="margin-bottom: var(--space-sm);">
           <img :src="google_logo" alt="google_logo" style="width: 60px;margin-right:24px;" >
           Sign In with Google
@@ -18,7 +18,7 @@
           Sign In with Kakao
         </span>
         <div class="separater"></div>
-        <span style="text-align: center;"> 아직 회원이 아니신가요?</span>
+        <span style="text-align: center; font-weight:700;"> 아직 회원이 아니신가요?</span>
         <span class="btn btn--primary" @click="toggle_Sign" style="font-size: 20px; font-weight:500;">회원가입</span>
 
 

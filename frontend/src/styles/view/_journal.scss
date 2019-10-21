@@ -1,4 +1,22 @@
 .journal {
   display: flex;
 
+  &-contents {
+    width: 100%;
+    margin-left: 240px;
+    text-align: start;
+
+    &_head {
+      height: 40px;
+      padding: var(--space-md);
+
+      h2 {
+        margin: 0px;
+      }
+    }
+    &_body {
+      padding: var(--space-md);
+      height: 1000px;
+    }
+  }
 }

@@ -20,6 +20,17 @@
           <option value="6">개발자</option>
           <option value="7">개발자</option>
         </select>
+
+        <label for="occupation">language</label>
+        <select name="occupation" id="occupation">
+          <option value="1">파이썬</option>
+          <option value="2">파이썬</option>
+          <option value="3">파이썬</option>
+          <option value="4">파이썬</option>
+          <option value="5">파이썬</option>
+          <option value="6">파이썬</option>
+          <option value="7">파이썬</option>
+        </select>
         <span class="btn btn--primary" @click="toggle_Sign"  style="font-size: 20px; font-weight:500;">돌아가기</span>
     </form>
   </div>
