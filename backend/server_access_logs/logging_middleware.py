@@ -17,13 +17,10 @@ class AccessLogsMiddleware(object):
         # Getting user using session
         session_key = request.session.session_key
         session = Session.objects.get(session_key=session_key)
-        uid = session.get_decoded().get('_auth_user_id')
-        try:
-            user = User.objects.get(pk=uid)
-        except:
-            class User:
-                username='anonymous user'
-            user = User()
+
+        if request.user.is_anonymous:
+            request.user.username = 'anonymous'
+        user = request.user
 
         access_logs_data = dict()
 
