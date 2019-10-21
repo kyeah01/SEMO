@@ -6,13 +6,18 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-class LoginView(APIView): 
+# token 인증을 위한 라이브러리
+from .serializers import *
+
+class SignUpView(APIView):
     def post(self, request):
-        # serializer, form 사용시 변경해야함
-        username = request.data['username']
-        password = request.data['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            authLogin(request, user)
-            return Response(status=status.HTTP_200_OK)
-        return Response(status=status.HTTP_403_FORBIDDEN)
+        pass
+
+class LoginView(APIView):
+    def post(self, request):
+        serializer = LoginUserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.authenticate
+        return Response({
+                    "user": user,
+                })
