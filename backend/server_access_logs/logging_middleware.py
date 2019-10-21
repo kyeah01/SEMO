@@ -1,7 +1,7 @@
 from .models import AccessLogsModel
 from django.conf import settings
 from django.utils import timezone
-
+from django.shortcuts import get_object_or_404
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 
@@ -17,8 +17,10 @@ class AccessLogsMiddleware(object):
         # Getting user using session
         session_key = request.session.session_key
         session = Session.objects.get(session_key=session_key)
-        uid = session.get_decoded().get('_auth_user_id')
-        user = User.objects.get(pk=uid)
+
+        if request.user.is_anonymous:
+            request.user.username = 'anonymous'
+        user = request.user
 
         access_logs_data = dict()
 
