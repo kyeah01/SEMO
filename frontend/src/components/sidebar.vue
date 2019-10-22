@@ -13,8 +13,9 @@
       </div>
     </div>
 
+    <div class="sidebar--expand_button-box"></div>
     <div class="sidebar--expand_button">
-      <fa-icon icon="angle-right" @click="chk_expand = !chk_expand"></fa-icon>
+      <fa-icon icon="angle-right" @click="chk_expand = !chk_expand" id="exapnd_btn"></fa-icon>
     </div>
 
   </div>
