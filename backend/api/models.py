@@ -21,6 +21,10 @@ class APISite(APIList):
     contributors = models.ManyToManyField(User)
 
 class EditedList(APIList):
+    target = models.ForeignKey(APISite, on_delete=models.CASCADE)
+    requestUser = models.ManyToManyField(User)
+
+class RegisterList(APIList):
     requestUser = models.ManyToManyField(User)
 
 class Ratings(models.Model):
