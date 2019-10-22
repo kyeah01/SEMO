@@ -1,11 +1,11 @@
 <template>
   <div class="listCard">
-    <div class="listCard-img" @click="imgClick">
+    <div class="listCard-img" @click="apiSelect">
       <img :src="imgSrc" alt="api image">
     </div>
     <div class="listCard-body">
       <p>Tmap API</p>
-      <p class="listCard-tags">대중교통 | 유료 | 길게 쓰려고 테스트중입니다.</p>
+      <p class="listCard-tags">대중교통 | 유료 | JSON</p>
       <p class="listCard-body">body</p>
     </div>
   </div>
@@ -26,8 +26,8 @@ export default {
     }
   },
   methods: {
-    imgClick() {
-      console.log('image click')
+    apiSelect() {
+      this.$emit('select', this.item)
     }
   }
 }

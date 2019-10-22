@@ -1,0 +1,15 @@
+@function detailw($detailw: 1000px, $payw: 0px) {
+  @return $detailw + $payw
+};
+
+.listDetail {
+  position: relative;
+  margin: {
+    top: var(--space-xxl);
+    bottom: var(--space-xxl);
+  }
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-sm);
+  width: detailw(1000px, 160px);
+  height: 600px;
+}
