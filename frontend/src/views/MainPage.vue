@@ -1,31 +1,40 @@
 <template>
   <div>
-    <div class="test">
       <div class="main_header">
-        <div>
-          <p>당신을 위한 API 추천 사이트</p>
-          <span>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took  a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also the leap into electronic typesetting,  remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing  Lorem Ipsum passages, and more recently  with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-          </span>
-        </div>
-        <SignInForm/>
-        <SignUpForm/>
+        <img class="main_header-img" src="https://uploads.actionvfx.com/header_photo/spina/article/222/6-Common-Nodes-for-Nuke-Beginners-Banner-compressor.jpg" alt="">
+        <transition name="fade" mode="in-out">
+          <SignInForm v-if="chk_Sign" @toggle_Sign="toggle_Sign"/>
+          <SignUpForm v-if="!chk_Sign" @toggle_Sign="toggle_Sign"/>
+        </transition>
       </div>
       <div>
         <p>Welcome home</p>
         <p>developers</p>
       </div>
-    </div>
+      <Footer/>
   </div>
 </template>
 
 <script>
+import Footer from "@/components/footer"
 import SignInForm from "@/components/signform/SignInForm"
 import SignUpForm from "@/components/signform/SignUpForm"
 export default {
   components: {
+    Footer,
     SignInForm,
     SignUpForm
+  },
+  data() {
+    return {
+      chk_Sign : true,
+    }
+  },
+
+  methods: {
+    toggle_Sign() {
+      this.chk_Sign = !this.chk_Sign
+    }
   }
 }
 </script>

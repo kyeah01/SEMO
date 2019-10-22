@@ -1,4 +1,38 @@
 .journal {
   display: flex;
 
+  &-contents {
+    width: 100%;
+    margin-left: 300px;
+    text-align: start;
+
+    &_head {
+      height: 40px;
+      padding: var(--space-md) 0px;
+
+      h2 {
+        margin: 0px;
+      }
+    }
+    &_body {
+      height: 1000px;
+
+      table {
+
+        tr {
+          padding: var(--space-xl);
+          height: 40px;
+          font-size: 30px;
+          text-align: center;
+        }
+
+        tr th:nth-child(1) {
+          width: 100px;
+        }
+        tr th:nth-child(2) {
+          width: 500px;
+        }
+      }
+    }
+  }
 }

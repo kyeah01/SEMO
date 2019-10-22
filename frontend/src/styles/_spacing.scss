@@ -6,6 +6,7 @@
   --space-lg:    calc(1.5 * var(--space-unit));
   --space-xl:    calc(1.75 * var(--space-unit));
   --space-xxl:    calc(2.5 * var(--space-unit));
+  --space-xxxl:    calc(4 * var(--space-unit));
   --component-padding: var(--space-md);
 }
 
@@ -14,5 +15,5 @@
   margin-bottom: var(--space-md);
   height: 2px;
   width: 100%;
-  background-color: white;
+  background-color: rgba(#b0b0b0, 0.4);
 }
