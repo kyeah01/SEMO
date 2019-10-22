@@ -1,25 +1,30 @@
 <template>
   <div class="category">
     <Sidebar :PropData="sideBarItems"/>
-    <div>
-      <p>API Category</p>
-      <div class="category-list">
-          <div v-for="item in ApiLists" :key="item.id">
-            <APIListCard :item="item"/>
-          </div>
+    <div class="category-contents">
+      <div class="category-list" v-if="!apiLoad">
+        <div v-for="item in ApiLists" :key="item.id">
+          <APIListCard :item="item" @select="apiSelect"/>
+        </div>
       </div>
+      <div class="category-list" v-if="apiLoad">
+        <APIDetail :apiId="apiId" @goList="apiLoad = !apiLoad"/>
       </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Sidebar from "@/components/sidebar"
 import APIListCard from "@/components/category/APIListCard"
+import APIDetail from "@/components/category/APIDetail"
 
 export default {
   name: 'CategoryPage',
   components: {
-    APIListCard, Sidebar
+    Sidebar,
+    APIListCard,
+    APIDetail,
   },
   data() {
     return {
@@ -40,7 +45,20 @@ export default {
         {id: 3, title: 'api'},
         {id: 4, title: 'api'},
         {id: 5, title: 'api'},
-      ]
+        {id: 6, title: 'api'},
+        {id: 7, title: 'api'},
+        {id: 8, title: 'api'},
+        {id: 9, title: 'api'},
+        {id: 10, title: 'api'},
+      ],
+      apiLoad: false,
+      apiId: '',
+    }
+  },
+  methods: {
+    apiSelect(item) {
+      this.apiId = item.id
+      this.apiLoad = true
     }
   }
 }
