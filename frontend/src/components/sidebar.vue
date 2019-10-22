@@ -22,9 +22,13 @@
 
 <script>
 export default {
-  props: [
-    'PropData'
-  ],
+  name: 'SideBar',
+  props: {
+    PropData: {
+      type: Array,
+      required: true
+    },
+  },
   data() {
     return {
       chk_expand : false,
