@@ -1,31 +1,33 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# nosql설정을 위해서
-from djangotoolbox.fields import *
+from django.core.validators import MaxValueValidator, MinValueValidator
 
-
-# Create your models here.
-# 2019.10.21 PM 6:00
-# embeddedModelField setting을 위한 작업 필요.
-# dictField를 embeddedModelField로 교체하고 해당 Field에 들어갈
-# 추상클래스를 정의해야함.
-class VersionData(models.Model):
-    content = models.TextField()
-
+# 2019.10.22 PM 2:23
+# 보여줄 확정 정보 / request를 받을 정보를 담을 model의 구조가 비슷하므로
+# 이를 상속시켜줄 model APIList 구현.
 class APIList(models.Model):
-    title = DictField()
-    url = DictField()
-    category = DictField()
-    description = DictField()
-    maxRequestCount = DictField()
-    expiredDate = DictField()
+    title = models.TextField()
+    url = models.TextField()
+    category = models.TextField()
+    description = models.TextField()
+    maxRequestCount = models.TextField()
+    expiredDate = models.TextField()
     
     class Meta:
         abstract = True
 
-class DataList(APIList):
-    ratings = DictField()
-    contributors = DictField()
+class APISite(APIList):
+    contributors = models.ManyToManyField(User)
 
 class EditedList(APIList):
-    requestUser = DictField()
+    requestUser = models.ManyToManyField(User)
+
+class Ratings(models.Model):
+    title = models.ForeignKey(APISite, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField(
+        default=1,
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+    )
+    rating_date = models.CharField(max_length=200)

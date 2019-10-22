@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # app list
     'api.apps.ApiConfig',
-    'authsystem.apps.AuthsystemConfig',
     # django log
     'server_access_logs',
     # framework
@@ -84,22 +83,13 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # original - sqlite3
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-# mongoDB
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'api-djongo-db',
-        'HOST': '192.168.31.52',
-        'PORT': 8080,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 # django log
 # file root setting
