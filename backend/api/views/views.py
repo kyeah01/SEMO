@@ -38,17 +38,31 @@ class APIDetailView(APIView):
         1) get
             - variable path 이용
             - 하나의 api 사이트의 detail 정보 response
+        
         2) patch
             - variable path 이용
-            - detail 정보를 갱신하기 위한 새로운 값 더해줌
+            - 버전관리를 위해 갱신되어야 할 내용을 뒤에 더해주는 식으로 갱신
         
         3) delete
             - variable path 이용
             - detail 정보 delete
 
     """
-    def get(self, request):
-        pass
+    def get(self, request, obj_pk):
+        apiSite = get_object_or_404(APISite, pk=obj_pk)
+        serializer = APISiteDetailSerializer(apiSite)
+        return Response(serializer.data)
 
-    def post(self, request):
-        pass
+    def post(self, request, obj_pk):
+        apiSite = get_object_or_404(APISite, pk=obj_pk)
+        serializer = APISiteDetailSerializer(instance=apiSite, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, obj_pk):
+        apiSite = get_object_or_404(APISite, pk=obj_pk)
+        apiSite.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+

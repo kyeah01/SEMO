@@ -4,4 +4,5 @@ from .views.views import *
 
 urlpatterns = [
     path('site/list/', APIListView.as_view()),
+    path('site/detail/<int:obj_pk>', APIDetailView.as_view()),
 ]
