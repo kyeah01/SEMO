@@ -17,3 +17,15 @@
   width: 100%;
   background-color: rgba(#b0b0b0, 0.4);
 }
+
+.divider {
+  border-left: 1px dashed #38546d;
+  margin: {
+    left: var(--space-md);
+    right: var(--space-md);
+  }
+  &-table {
+    margin-top: 60px;
+    height: 340px;
+  }
+}
