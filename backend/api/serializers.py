@@ -25,6 +25,11 @@ class EditRequestDetailSerializer(serializers.ModelSerializer):
         model = EditedList
         fields = '__all__'
 
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ratings
+        fields = '__all__'
+
 # 회원가입 시리얼라이저
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
