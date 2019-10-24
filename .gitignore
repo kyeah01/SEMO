@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/vue,node,python,django,jupyternotebooks
 # Edit at https://www.gitignore.io/?templates=vue,node,python,django,jupyternotebooks
 
+### secret key ###
+secret.json
+
 ### Django ###
 *.log
 *.pot
