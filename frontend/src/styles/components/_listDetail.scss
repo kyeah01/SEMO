@@ -13,3 +13,45 @@
   width: detailw(1000px, 160px);
   height: 600px;
 }
+
+.detail {
+  position: relative;
+  width: 95%;
+
+  top: 20px;
+  left: 25px;
+
+  &-Header {
+    h1 {
+      margin: {
+        bottom: 10px;
+      }
+    }
+  }
+  &-Table {
+    display: flex;
+    margin: {
+      top: 25px;
+    }
+    &-left {
+      table {
+        table-layout: fixed;
+        width: 400px;
+        height: 203.2px;
+      }
+    }
+    &-right {
+      table {
+        table-layout: fixed;
+        width: 100%;
+      }
+    }
+    &-subTitle {
+      text-align: left;
+      width: 140px;
+    }
+  }
+  &-subTable {
+    background-color: rgba(119, 119, 119, 0.212);
+  }
+}

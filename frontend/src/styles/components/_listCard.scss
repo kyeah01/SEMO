@@ -4,6 +4,7 @@
   box-shadow: var(--shadow-sm);
   width: 200px;
   &-img {
+    cursor: pointer;
     filter: none;
     transition: all 0.3s ease;
     &:hover {
