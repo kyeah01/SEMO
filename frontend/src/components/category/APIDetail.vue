@@ -4,7 +4,7 @@
       <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
     <div class="listDetail">
-      <fa-icon icon="times" @click="goList"></fa-icon>
+      <fa-icon icon="times" @click="goList" style="z-index: 20;"></fa-icon>
       <APIDetailTop/>
     </div>
     <div class="listDetail">
