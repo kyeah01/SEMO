@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # app list
     'api.apps.ApiConfig',
+    'userauth.apps.UserauthConfig',
     # framework
     'rest_framework',
     'drf_yasg',
