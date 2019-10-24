@@ -2,21 +2,25 @@
 <div class="detail">
   <div>
     <div class="detail-Header">
-      <h2>How to Use</h2>
+      <h2>사용 방법</h2>
     </div>
   </div>
 
   <div class="detail-carousel">
     <!-- shuffle btn -->
     <div>
-      <button class="test test-1" @click="slider(false)">back</button>
-      <button class="test test-2" @click="slider(true)">go</button>
+      <span class="btn btn-back" v-show="slideCnt !== 1" @click="slider(false)">
+        <fa-icon icon="angle-left"></fa-icon>
+      </span>
+      <span class="btn btn-go" v-show="slideCnt !== items.length" @click="slider(true)">
+        <fa-icon icon="angle-right"></fa-icon>
+      </span>
     </div>
     <!-- carousel -->
     <div id="slideImg" style="display:flex;">
       <div v-for="item in items" :key="item">
         <img :src="imgSrc" alt="">
-        <div>{{ item }}</div>
+        <h4>{{ item }}</h4>
         <div>어딜 보시나요</div>
       </div>
     </div>
@@ -33,24 +37,41 @@ export default {
       imgSrc: 'http://toeic.ybmclass.com/toeic/img/noimage.gif',
       items: [1, 2, 3],
       defaultPos: 0,
+      slideCnt: 1,
     }
   },
   methods: {
     slider(bool) {
+      if (this.slideCnt === this.items.length && bool === true) {return}
+      if (this.slideCnt === 1 && bool === false) {return}
+
       var currentPos = this.defaultPos
-      var targetPos = currentPos - 500
+      var targetPos
+
+      if (bool) {
+        targetPos = currentPos - 600
+        this.slideCnt++
+      } else {
+        targetPos = currentPos + 600
+        this.slideCnt--
+      }
+
       var speed = 5
       var elem = document.getElementById('slideImg')
 
-      this.moveLeft(currentPos, targetPos, speed, elem)
+      this.moveSlide(currentPos, targetPos, speed, elem, bool)
       this.defaultPos = targetPos
     },
-    moveLeft(cp, tp, speed, elem) {
+    moveSlide(cp, tp, speed, elem, dir) {
       if (cp === tp) { return }
-      cp -= speed
+      if (dir) {
+        cp -= speed
+      } else {
+        cp += speed
+      }
       elem.style.left = cp + 'px'
       setTimeout(() => {
-        this.moveLeft(cp, tp, speed, elem)
+        this.moveSlide(cp, tp, speed, elem, dir)
       }, 1);
     }
   },
@@ -62,25 +83,33 @@ export default {
 #slideImg {
   position: relative;
 }
-// img
-img {
-  height: 320px;
-  width: 500px;
-  margin-right: 10px;
-}
-
 .detail-carousel {
   position: relative;
   display: flex;
   overflow: hidden;
 }
-.test {
+// img
+img {
+  // height: 320px;
+  height: 450px;
+  width: 600px;
+  // padding-top: 56.25%;
+  margin-right: 10px;
+}
+h4 {
+  margin: {
+    left: 10px;
+    bottom: 10px;
+  }
+}
+// btn
+.btn {
   position: absolute;
-  &-1 {
+  &-back {
     top: 45%;
     z-index: 1;
   }
-  &-2 {
+  &-go {
     top: 45%;
     right: 0%;
     z-index: 1;
