@@ -11,6 +11,7 @@ class APIList(models.Model):
     url = models.TextField()
     category = models.TextField()
     description = models.TextField()
+    howToUse = models.TextField() 
     maxRequestCount = models.TextField()
     expiredDate = models.TextField()
     
@@ -28,7 +29,7 @@ class RegisterList(APIList):
     requestUser = models.ManyToManyField(User)
 
 class Ratings(models.Model):
-    title = models.ForeignKey(APISite, on_delete=models.CASCADE)
+    apiSite = models.ForeignKey(APISite, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.IntegerField(
         default=1,
