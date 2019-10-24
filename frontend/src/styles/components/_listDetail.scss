@@ -1,17 +1,29 @@
 @function detailw($detailw: 1000px, $payw: 0px) {
   @return $detailw + $payw
 };
+.apiDetail {
+  display: flex;
+  position: relative;
+  .listDetail-content {
+    width: 91%;
+  }
+  .listDetail-ad {
+    position: fixed;
+    right: 50px;
+  }
+}
 
 .listDetail {
+  background-color: white;
   position: relative;
   margin: {
-    top: var(--space-xxl);
+    top: var(--space-md);
     bottom: var(--space-xxl);
   }
-  border-radius: var(--radius-xs);
   box-shadow: var(--shadow-sm);
-  width: detailw(1000px, 160px);
-  height: 600px;
+
+  height: 55%;
+  width: 84%;
 }
 
 .detail {
@@ -20,7 +32,7 @@
 
   top: 20px;
   left: 25px;
-
+  margin: 0;
   &-Header {
     h1 {
       margin: {
@@ -36,14 +48,15 @@
     &-left {
       table {
         table-layout: fixed;
-        width: 400px;
-        height: 203.2px;
+        width: 500px;
+        height: 350px;
       }
     }
     &-right {
       table {
         table-layout: fixed;
         width: 100%;
+        height: 288px;
       }
     }
     &-subTitle {

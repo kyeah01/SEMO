@@ -1,6 +1,8 @@
 .listCard {
+  background-color: $white;
   margin: var(--space-md);
-  border-radius: var(--radius-xs);
+  // border-radius: var(--radius-xs);
+  border-radius: 4px;
   box-shadow: var(--shadow-sm);
   width: 200px;
   &-img {
@@ -10,8 +12,8 @@
     &:hover {
       filter: grayscale(0.3);
       background: lighten(black, 70%);
-      border-top-left-radius: var(--radius-xs);
-      border-top-right-radius: var(--radius-xs);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
     }
     img {
       border-radius: var(--radius-xs);

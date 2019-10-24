@@ -2,8 +2,10 @@
   <div id="app">
     <div>
       <nav>
-        <div class="nav-items">
+        <div class="nav-logo" style="width: 250px;">
           <router-link :to="{ name: 'Home' }" style="font-size:28px; font-weight:700;">SEMO</router-link>
+        </div>
+        <div class="nav-items">
           <router-link :to="{ name: 'Introduce' }">API란</router-link>
           <router-link :to="{ name: 'Category' }">API 카테고리</router-link>
           <router-link :to="{ name: 'Journal' }">개발 일지</router-link>
@@ -65,6 +67,6 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    padding-top: var(--space-xxxl);
+    padding-top: var(--space-xxl);
   }
 </style>
