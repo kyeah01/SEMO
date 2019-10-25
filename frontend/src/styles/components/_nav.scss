@@ -1,25 +1,30 @@
 nav {
   position: fixed;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   align-items: center;
   top:0px;
   background-color: $primary;
   width: 100vw;
   min-width: 1200px;
   z-index: 999;
-
-  height: 80px;
-
+  // 191024
+  height: var(--space-xxl);
+  line-height: 40px;
+  box-shadow: var(--shadow-md);
   a {
     text-decoration: none;
     color: $white;
-    font-size: 23px;
+    // 191024
+    font-size: 18px;
+    width: 100px;
+    // border-bottom: 4px solid black;
   }
   .nav-items {
     display: flex;
-    justify-content: space-around;
-    min-width: 900px;
+    // justify-content: space-around;
+    min-width: 70vw;
+    // border: 1px solid red;
   }
   .nav-body {
     display: flex;

@@ -58,12 +58,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # app list
     'api.apps.ApiConfig',
-    # django log
-    'server_access_logs',
+    'userauth.apps.UserauthConfig',
     # framework
     'rest_framework',
     'drf_yasg',
+    # knox
+    'knox',
+    # django log
+    'server_access_logs',
 ]
+# knox에서 model을 한번 도는데, server_access_logs에서 다시 모든 모델을 돌아서
+# admin.sites.AlreadyRegistered 오류가 나기 때문에 log를 나중에 인스톨해서 중복오류 회피
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,17 +129,18 @@ DATABASES = {
 
 
 # django log
-# file root setting
 LOGGING = {
     'version': 1,
+    # 장고 기본 로거를 비활성화
     'disable_existing_loggers': False,
+    # 로그 데이터 형태를 가공
     'formatters': {
         'logFormat': {
             'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
             'datefmt': "%Y-%m-%d %H:%M:%S"
         },
     },
-    # 핸들러
+    # 핸들러(console, file)와 포매터를 연결
     'handlers': {
         'console': {
             'level': 'DEBUG',
@@ -142,8 +148,11 @@ LOGGING = {
             'formatter': 'logFormat',
         },
     },
+    # 위 세팅을 사용할 곳 명시
     'loggers': {
+        # 최상위 project
         'django': {
+            # 핸들러를 리스트 형태로 사용(여러 핸들러 사용 가능)
             'handlers': ['console'],
             'propagate': True,
             'level': 'INFO',
@@ -155,11 +164,12 @@ LOGGING = {
 # rest framework 설정
 REST_FRAMEWORK = {
     # pagenation 설정
+    # https://www.django-rest-framework.org/api-guide/pagination/
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10,
+    # knox 인증 사용
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

@@ -15,8 +15,13 @@ class EditRequestListSerializer(serializers.ModelSerializer):
     class Meta:
         model = EditedList
         fields = ('pk', 'target', 'title')
-    
+
 class EditRequestDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = EditedList
+        fields = '__all__'
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ratings
         fields = '__all__'

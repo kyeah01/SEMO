@@ -1,17 +1,24 @@
 <template>
-  <div>
-    <div v-show="loadSpinner" class="lds-detail">
-      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div class="apiDetail">
+    <div class="listDetail-content">
+      <div v-show="loadSpinner" class="lds-detail">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+      <div class="listDetail">
+        <fa-icon icon="times" @click="goList" style="z-index: 2;"></fa-icon>
+        <APIDetailTop/>
+      </div>
+      <div class="listDetail">
+        <APIDetailMiddle/>
+      </div>
+      <div class="listDetail">
+        <APIDetailBottom/>
+      </div>
     </div>
-    <div class="listDetail">
-      <fa-icon icon="times" @click="goList"></fa-icon>
-      <APIDetailTop/>
-    </div>
-    <div class="listDetail">
-      <APIDetailMiddle/>
-    </div>
-    <div class="listDetail">
-      <APIDetailBottom/>
+    <div class="listDetail-ad">
+      <!-- <div v-for="item in apiRecommend" :key="item">
+        <APIListCard/>
+      </div> -->
     </div>
   </div>
 </template>
@@ -21,12 +28,15 @@ import APIDetailTop from './APIDetailTop'
 import APIDetailMiddle from './APIDetailMiddle'
 import APIDetailBottom from './APIDetailBottom'
 
+import APIListCard from './APIListCard'
+
 export default {
   name: 'APIDetail',
   components: {
     APIDetailTop,
     APIDetailMiddle,
-    APIDetailBottom
+    APIDetailBottom,
+    APIListCard
   },
   props: {
     apiId: {
@@ -36,19 +46,21 @@ export default {
   },
   data: () => {
     return {
-      loadSpinner: true
+      loadSpinner: true,
+      apiRecommend: [1, 2, 3]
     }
   },
   watch: {
     loadSpinner() {
       if (this.loadSpinner) {
-        document.documentElement.style.overflow = 'hidden'
+        document.body.style.overflowY = 'hidden'
       }
-      document.documentElement.style.overflow = 'auto'
+      document.body.style.overflowY = 'auto'
     }
   },
   mounted() {
-    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflowX = 'hidden'
+    document.body.style.overflowY = 'hidden'
     this.loadData()
   },
   methods: {

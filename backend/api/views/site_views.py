@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.shortcuts import get_list_or_404, get_object_or_404
+from django.shortcuts import get_object_or_404
 
 from rest_framework import status
 from rest_framework.views import APIView
@@ -21,7 +21,7 @@ class APIListView(APIView):
     def get(self, request):
         apiSiteList = APISite.objects.all()
         serializer = APISiteListSerializer(apiSiteList, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     def post(self, request):
         serializer = APISiteDetailSerializer(request.data)
@@ -33,6 +33,7 @@ class APIListView(APIView):
 
 class APIDetailView(APIView):
     """
+        19.10.23 AM 9:50
         하나의 api view를 확인하고 관리할 수 있게 하는 view
 
         1) get
@@ -48,21 +49,20 @@ class APIDetailView(APIView):
             - detail 정보 delete
 
     """
-    def get(self, request, obj_pk):
-        apiSite = get_object_or_404(APISite, pk=obj_pk)
+    def get(self, request, site_pk):
+        apiSite = get_object_or_404(APISite, pk=site_pk)
         serializer = APISiteDetailSerializer(apiSite)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request, obj_pk):
-        apiSite = get_object_or_404(APISite, pk=obj_pk)
-        serializer = APISiteDetailSerializer(instance=apiSite, partial=True)
+    def patch(self, request, site_pk):
+        apiSite = get_object_or_404(APISite, pk=site_pk)
+        serializer = APISiteDetailSerializer(instance=apiSite, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, obj_pk):
-        apiSite = get_object_or_404(APISite, pk=obj_pk)
+    def delete(self, request, site_pk):
+        apiSite = get_object_or_404(APISite, pk=site_pk)
         apiSite.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
