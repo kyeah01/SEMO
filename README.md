@@ -1,5 +1,5 @@
-<p align="center">이미지</p><h1 align="center">NEMO</h1><p align="center">
-    Movie Recommendation Project
+<h1 align="center">SEMO</h1><p align="center">
+    API Wiki Docs Page
 </p>
 
 
