@@ -1,6 +1,9 @@
 
-# Created by https://www.gitignore.io/api/vue,node,vuejs,python,django
-# Edit at https://www.gitignore.io/?templates=vue,node,vuejs,python,django
+# Created by https://www.gitignore.io/api/vue,node,python,django,jupyternotebooks
+# Edit at https://www.gitignore.io/?templates=vue,node,python,django,jupyternotebooks
+
+### secret key ###
+secret.json
 
 ### Django ###
 *.log
@@ -9,7 +12,6 @@
 __pycache__/
 local_settings.py
 db.sqlite3
-db.sqlite3-journal
 media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
@@ -71,6 +73,13 @@ coverage.xml
 # Translations
 *.mo
 
+# Django stuff:
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
 # Scrapy stuff:
 .scrapy
 
@@ -79,6 +88,13 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
 
 # pyenv
 .python-version
@@ -96,17 +112,21 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
 # Spyder project settings
 .spyderproject
 .spyproject
 
 # Rope project settings
 .ropeproject
-
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
 
 # mkdocs documentation
 /site
@@ -118,6 +138,16 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+### JupyterNotebooks ###
+# gitignore template for Jupyter Notebooks
+# website: http://jupyter.org/
+
+*/.ipynb_checkpoints/*
+
+# Remove previous ipynb_checkpoints
+#   git rm -r .ipynb_checkpoints/
+#
 
 ### Node ###
 # Logs
@@ -184,7 +214,6 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -194,9 +223,6 @@ typings/
 
 # nuxt.js build output
 .nuxt
-
-# react / gatsby
-public/
 
 # vuepress build output
 .vuepress/dist
@@ -227,11 +253,19 @@ public/
 
 # Translations
 
+# Django stuff:
+
+# Flask stuff:
+
 # Scrapy stuff:
 
 # Sphinx documentation
 
 # PyBuilder
+
+# Jupyter Notebook
+
+# IPython
 
 # pyenv
 
@@ -245,11 +279,11 @@ public/
 
 # SageMath parsed files
 
+# Environments
+
 # Spyder project settings
 
 # Rope project settings
-
-# Mr Developer
 
 # mkdocs documentation
 
@@ -258,23 +292,13 @@ public/
 # Pyre type checker
 
 ### Vue ###
-.DS_*
-**/*.backup.*
-**/*.back.*
-
-node_modules
-bower_componets
-
-*.sublime*
-
-psd
-thumb
-sketch
-
-### Vuejs ###
+# gitignore template for Vue.js projects
 # Recommended template: Node.gitignore
 
-npm-debug.log
-yarn-error.log
+# TODO: where does this rule come from?
+docs/_book
 
-# End of https://www.gitignore.io/api/vue,node,vuejs,python,django
+# TODO: where does this rule come from?
+test/
+
+# End of https://www.gitignore.io/api/vue,node,python,django,jupyternotebooks

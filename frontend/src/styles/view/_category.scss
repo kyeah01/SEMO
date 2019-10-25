@@ -1,0 +1,16 @@
+.category {
+  display: flex;
+  &-contents {
+    // width: 100%;
+    margin: {
+      left: 270px;
+      right: 200px;
+    }
+    text-align: start;
+  }
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

@@ -1,11 +1,27 @@
 from rest_framework import serializers
-from api.models import User
+from .models import APISite, EditedList, RegisterList, Ratings
 
-class UserSerializer(serializers.ModelSerializer):
+class APISiteListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = APISite
+        fields = ('title', 'url', 'category')
+
+class APISiteDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = APISite
         fields = '__all__'
 
-class LoginUserSerializer(serializers.Serializer):
-    username = serializers.CharField()
-    password = serializers.CharField()
+class EditRequestListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EditedList
+        fields = ('pk', 'target', 'title')
+
+class EditRequestDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EditedList
+        fields = '__all__'
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ratings
+        fields = '__all__'

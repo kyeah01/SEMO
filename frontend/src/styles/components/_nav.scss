@@ -1,0 +1,117 @@
+nav {
+  position: fixed;
+  display: flex;
+  // justify-content: space-around;
+  align-items: center;
+  top:0px;
+  background-color: $primary;
+  width: 100vw;
+  min-width: 1200px;
+  z-index: 999;
+  // 191024
+  height: var(--space-xxl);
+  line-height: 40px;
+  box-shadow: var(--shadow-md);
+  a {
+    text-decoration: none;
+    color: $white;
+    // 191024
+    font-size: 18px;
+    width: 100px;
+    // border-bottom: 4px solid black;
+  }
+  .nav-items {
+    display: flex;
+    // justify-content: space-around;
+    min-width: 70vw;
+    // border: 1px solid red;
+  }
+  .nav-body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &_icon {
+      font-size: 30px;
+    }
+
+    input {
+      padding: var(--space-sm);
+      padding-left: 50px;
+      font-size: 20px;
+      border-radius: var(--space-xs);
+      width: 300px;
+      background-color: $primary;
+      border: none;
+    }
+
+    input + .search-box {
+      display: flex;
+      position: relative;
+      right: 358px;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 40.5px;
+      background-color: $primary;
+      border: none;
+      border-radius: var(--space-xs);
+
+      .fa-search {
+        color: #8e8e8e;
+      }
+    }
+
+    input:focus {
+      width: 300px;
+      border: none;
+      background-color: white;
+    }
+
+    input:focus + .search-box {
+      display: flex;
+      position: relative;
+      top: 0.125px;
+      right: 358px;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 39.5px;
+      background-color: white;
+      border-radius: var(--space-xs);
+
+      .fa-search {
+        color: black;
+      }
+    }
+  }
+}
+
+.fa-user {
+  margin-right: var(--space-md);
+  color: white;
+}
+
+
+.fa-user:hover {
+  cursor: pointer;
+}
+
+.fa-off {
+  margin-right: var(--space-md);
+  color: white;
+}
+
+.fa-off:hover {
+  cursor: pointer;
+}
+
+.profile-box {
+  position: fixed;
+  right: 0px;
+  top: 80px;
+  height: 150px;
+  width: 200px;
+  z-index: 999;
+  background-color: $white;
+}

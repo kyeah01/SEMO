@@ -1,0 +1,11 @@
+.main {
+  &_header {
+    display: flex;
+
+    &-img {
+      width: 100%;
+      min-height: 800px;
+      opacity: 0.7;
+    }
+  }
+}

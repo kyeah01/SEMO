@@ -1,93 +1,38 @@
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser, PermissionsMixin
-)
 from django.db import models
-from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
 
+from django.core.validators import MaxValueValidator, MinValueValidator
 
-class UserManager(BaseUserManager):
-    def create_user(self, email, nickname, password=None):
-        """
-        주어진 이메일, 닉네임, 비밀번호 등 개인정보로 User 인스턴스 생성
-        """
-        if not email:
-            raise ValueError(_('Users must have an email address'))
-
-        user = self.model(
-            email=self.normalize_email(email),
-            nickname=nickname,
-        )
-
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, email, nickname, password):
-        """
-        주어진 이메일, 닉네임, 비밀번호 등 개인정보로 User 인스턴스 생성
-        단, 최상위 사용자이므로 권한을 부여한다.
-        """
-        user = self.create_user(
-            email=email,
-            password=password,
-            nickname=nickname,
-        )
-
-        user.is_superuser = True
-        user.save(using=self._db)
-        return user
-
-
-class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(
-        verbose_name=_('Email address'),
-        max_length=255,
-        unique=True,
-    )
-    nickname = models.CharField(
-        verbose_name=_('Nickname'),
-        max_length=30,
-        unique=True
-    )
-    is_active = models.BooleanField(
-        verbose_name=_('Is active'),
-        default=True
-    )
-    date_joined = models.DateTimeField(
-        verbose_name=_('Date joined'),
-        default=timezone.now
-    )
-    # 이 필드는 레거시 시스템 호환을 위해 추가할 수도 있다.
-    salt = models.CharField(
-        verbose_name=_('Salt'),
-        max_length=10,
-        blank=True
-    )
-
-    objects = UserManager()
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nickname', ]
-
+# 2019.10.22 PM 2:23
+# 보여줄 확정 정보 / request를 받을 정보를 담을 model의 구조가 비슷하므로
+# 이를 상속시켜줄 model APIList 구현.
+class APIList(models.Model):
+    title = models.TextField()
+    url = models.TextField()
+    category = models.TextField()
+    description = models.TextField()
+    howToUse = models.TextField() 
+    maxRequestCount = models.TextField()
+    expiredDate = models.TextField()
+    
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
-        ordering = ('-date_joined',)
+        abstract = True
 
-    def __str__(self):
-        return self.nickname
+class APISite(APIList):
+    contributors = models.ManyToManyField(User)
 
-    def get_full_name(self):
-        return self.nickname
+class EditedList(APIList):
+    target = models.ForeignKey(APISite, on_delete=models.CASCADE)
+    requestUser = models.ManyToManyField(User)
 
-    def get_short_name(self):
-        return self.nickname
+class RegisterList(APIList):
+    requestUser = models.ManyToManyField(User)
 
-    @property
-    def is_staff(self):
-        "Is the user a member of staff?"
-        # Simplest possible answer: All superusers are staff
-        return self.is_superuser
-
-    get_full_name.short_description = _('Full name')
+class Ratings(models.Model):
+    apiSite = models.ForeignKey(APISite, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField(
+        default=1,
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+    )
+    rating_date = models.CharField(max_length=200)

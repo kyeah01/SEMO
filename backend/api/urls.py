@@ -1,14 +1,11 @@
-from django.urls import path, include
-from django.conf.urls import url
+from django.urls import path
 
-from api.views.auth_views import UserViewSet, AuthViewSet
-from rest_framework import renderers
-from rest_framework import routers
-
-router = routers.DefaultRouter()
-router.register(r'auth', AuthViewSet, base_name='Auth')
-router.register(r'users', UserViewSet, base_name='User')
+from .views.site_views import *
+from .views.rating_views import *
 
 urlpatterns = [
-    url(r'', include(router.urls)),
+    path('site/list/', APIListView.as_view()),
+    path('site/detail/<int:site_pk>', APIDetailView.as_view()),
+    path('rating/list/', RatingView.as_view()),
+    path('rating/edit/<int:rating_pk>', RatingEditView.as_view()),
 ]
