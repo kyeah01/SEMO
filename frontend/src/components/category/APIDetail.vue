@@ -11,7 +11,7 @@
       <div class="listDetail">
         <APIDetailMiddle/>
       </div>
-      <div class="listDetail">
+      <div class="listDetail listDetail-guide">
         <APIDetailBottom/>
       </div>
     </div>

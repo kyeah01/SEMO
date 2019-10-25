@@ -1,7 +1,7 @@
 <template>
 <div>
   <div>
-    1. EndPoint
+    <h2>1. EndPoint</h2>
   </div>
   <div class="Guide-ep-content">
     <!-- 왼쪽 테이블 -->
@@ -101,9 +101,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-  border: 1px solid blue;
-}
 .Guide-ep {
   &-content {
     position: relative;

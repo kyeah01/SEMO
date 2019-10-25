@@ -22,8 +22,11 @@
   }
   box-shadow: var(--shadow-sm);
 
-  height: 55%;
+  height: 35%;
   width: 84%;
+  &-guide {
+    height: 100%;
+  }
 }
 
 .detail {
