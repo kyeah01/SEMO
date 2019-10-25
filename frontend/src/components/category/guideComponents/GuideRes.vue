@@ -1,7 +1,7 @@
 <template>
 <div>
   <div>
-    3. Responses
+    <h2>3. Responses</h2>
   </div>
 </div>
 </template>
