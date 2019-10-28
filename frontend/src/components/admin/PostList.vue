@@ -1,7 +1,8 @@
 <template>
 <div>
-  <button>add post</button>
+  <button @click="addPost()">add post</button>
   <table>
+
     <thead>
       <tr>
         <th><input type="checkbox" v-model="allSelect" @click="selectAll(true)"></th>
@@ -101,6 +102,9 @@ export default {
       } else {
         this.allSelect = false
       }
+    },
+    addPost() {
+      console.log('우와')
     }
   }
 }
