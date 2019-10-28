@@ -1,6 +1,17 @@
 <template>
   <div class="category">
-    <Sidebar :PropData="sideBarItems"/>
+
+    <!-- sidebar -->
+    <Sidebar>
+      <template v-slot:title>
+        <h2>{{ sideBarItems[0].title }}</h2>
+      </template>
+      <template v-slot:list>
+        <li v-for="item in sideBarItems.slice(2, sideBarItems.length-1)" :key="item.name">{{ item.name }}</li>
+      </template>
+    </Sidebar>
+
+    <!-- content -->
     <div class="category-contents">
       <div class="category-list" v-if="!apiLoad">
         <div v-for="item in ApiLists" :key="item.id">

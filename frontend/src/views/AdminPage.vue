@@ -1,9 +1,19 @@
 <template>
 <div class="admin-main">
-  <Sidebar :PropData="sideBarItems"/>
+  <!-- sidebar -->
+  <Sidebar>
+    <template v-slot:title>
+      <h2>{{ sideBarItems[0].title }}</h2>
+    </template>
+    <template v-slot:list>
+      <router-link v-for="route in routes[routes.length - 1].children" :key="route.path" :to="{name: route.name}">
+        {{ route.name }}
+      </router-link>
+    </template>
+  </Sidebar>
+  <!-- content -->
   <div class="admin-contents">
     <div>
-      <router-link :to="{ name: 'AdminPost' }">post</router-link>
       <transition name="fade" mode="out-in">
         <router-view/>
       </transition>
@@ -33,6 +43,11 @@ export default {
         { name: 'Page Views', count: 5965 },
         { name: 'Rate', count: 10 },
       ]
+    }
+  },
+  computed: {
+    routes() {
+      return this.$router.options.routes
     }
   }
 }
