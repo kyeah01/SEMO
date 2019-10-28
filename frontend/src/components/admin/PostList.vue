@@ -1,17 +1,17 @@
 <template>
 <div>
-
+  <button>add post</button>
   <table>
     <thead>
       <tr>
-        <th><input type="checkbox"></th>
+        <th><input type="checkbox" v-model="allSelect" @click="selectAll(true)"></th>
         <th v-for="(name, index) in tableName" :key="index">{{ name }}</th>
       </tr>
     </thead>
 
     <tbody>
       <tr v-for="(post, index) in paginatedData" :key="index">
-        <th><input type="checkbox"></th>
+        <th><input type="checkbox" :value="post" v-model="checkedPost" @click="selectAll(false)"></th>
         <th v-for="item in post" :key="item">{{ item }}</th>
       </tr>
     </tbody>
@@ -40,6 +40,8 @@ export default {
     return {
       tableName: ['API ID', '제목', '등록일자', '카테고리', '수정요청'],
       pageNum: 0,
+      checkedPost: [],
+      allSelect: false,
       posts: [
         { id: 1, title: '오타수정', date: '191020', category: '교통', edit: true },
         { id: 2, title: '오타수정', date: '191021', category: '지도', edit: true },
@@ -79,10 +81,25 @@ export default {
     paginationBtn (bool) {
       if (bool) {
         if (this.pageCount === this.pageNum+1) {return}
+        this.allSelect = false
+        this.checkedPost = []
         this.pageNum++
       } else {
         if (this.pageNum === 0) {return}
+        this.allSelect = false
+        this.checkedPost = []
         this.pageNum--
+      }
+    },
+    selectAll(bool) {
+      if (bool) {
+        if (!this.allSelect) {
+          this.checkedPost = this.paginatedData
+        } else {
+          this.checkedPost = []
+        }
+      } else {
+        this.allSelect = false
       }
     }
   }

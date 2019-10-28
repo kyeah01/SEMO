@@ -1,6 +1,17 @@
 <template>
   <div class="journal">
-    <Sidebar :PropData="developers"/>
+
+    <!-- sidebar -->
+    <Sidebar>
+      <template v-slot:title>
+        <h2>{{ developers[0].title }}</h2>
+      </template>
+      <template v-slot:list>
+        <li v-for="item in developers.slice(1, developers.length-1)" :key="item.name">{{ item.name }}</li>
+      </template>
+    </Sidebar>
+
+    <!-- content -->
     <div class="journal-contents">
       <div class="journal-contents_head">
         <h2>Journal Page</h2>
