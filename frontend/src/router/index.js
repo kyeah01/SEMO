@@ -7,8 +7,8 @@ import CategoryPage from '@/views/CategoryPage'
 import JournalPage from '@/views/JournalPage'
 // admin
 import AdminPage from '@/views/AdminPage'
+import AdminMain from '@/components/admin/AdminMain'
 import AdminPost from '@/components/admin/PostList'
-
 
 Vue.use(VueRouter)
 
@@ -22,6 +22,7 @@ const router = new VueRouter({
       {
         path: '/admin', component: AdminPage, name: 'Admin',
         children: [
+          { path: 'main', component: AdminMain, name: 'AdminMain'},
           { path: 'posts', component: AdminPost, name: 'AdminPost'},
         ]
       },
