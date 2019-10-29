@@ -7,7 +7,7 @@
         <h2>{{ sideBarItems[0].title }}</h2>
       </template>
       <template v-slot:list>
-        <li v-for="item in sideBarItems.slice(2, sideBarItems.length-1)" :key="item.name">{{ item.name }}</li>
+        <li v-for="item in sideBarItems.slice(2, sideBarItems.length)" :key="item.name" @click="formFilter(item.id)">{{ item.name }}</li>
       </template>
     </Sidebar>
 
@@ -42,13 +42,13 @@ export default {
       sideBarItems : [
         {title : 'API LIST'},
         {subtitle : ''},
-        {name: '공공데이터'},
-        {name: '대중교통'},
-        {name: '음악'},
-        {name: '영화'},
-        {name: '사진'},
-        {name: '미디어'},
-        {name: '날씨'},
+        {name: '공공데이터', id:1},
+        {name: '대중교통', id:2},
+        {name: '음악', id:3},
+        {name: '영화', id:4},
+        {name: '사진', id:5},
+        {name: '미디어', id:6},
+        {name: '날씨', id:7},
       ],
       ApiLists: [
         {id: 1, title: 'api'},
@@ -62,6 +62,7 @@ export default {
         {id: 9, title: 'api'},
         {id: 10, title: 'api'},
       ],
+      categoryFilter : 0,
       apiLoad: false,
       apiId: '',
     }
@@ -70,6 +71,10 @@ export default {
     apiSelect(item) {
       this.apiId = item.id
       this.apiLoad = true
+    },
+    formFilter(id) {
+      this.categoryFilter = id
+      console.log(this.categoryFilter)
     }
   }
 }
