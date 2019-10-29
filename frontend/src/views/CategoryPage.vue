@@ -18,9 +18,9 @@
           <APIListCard :item="item" @select="apiSelect"/>
         </div>
       </div>
-      <div class="category-list" v-if="apiLoad">
+      <!-- <div class="category-list" v-if="apiLoad">
         <APIDetail :apiId="apiId" @goList="apiLoad = !apiLoad"/>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -61,6 +61,36 @@ export default {
         {id: 8, title: 'api'},
         {id: 9, title: 'api'},
         {id: 10, title: 'api'},
+        {id: 11, title: 'api'},
+        {id: 12, title: 'api'},
+        {id: 13, title: 'api'},
+        {id: 14, title: 'api'},
+        {id: 15, title: 'api'},
+        {id: 16, title: 'api'},
+        {id: 17, title: 'api'},
+        {id: 18, title: 'api'},
+        {id: 19, title: 'api'},
+        {id: 20, title: 'api'},
+        {id: 21, title: 'api'},
+        {id: 22, title: 'api'},
+        {id: 23, title: 'api'},
+        {id: 24, title: 'api'},
+        {id: 25, title: 'api'},
+        {id: 26, title: 'api'},
+        {id: 27, title: 'api'},
+        {id: 28, title: 'api'},
+        {id: 29, title: 'api'},
+        {id: 30, title: 'api'},
+        {id: 31, title: 'api'},
+        {id: 32, title: 'api'},
+        {id: 33, title: 'api'},
+        {id: 34, title: 'api'},
+        {id: 35, title: 'api'},
+        {id: 36, title: 'api'},
+        {id: 37, title: 'api'},
+        {id: 38, title: 'api'},
+        {id: 39, title: 'api'},
+        {id: 40, title: 'api'},
       ],
       categoryFilter : 0,
       apiLoad: false,
@@ -71,6 +101,8 @@ export default {
     apiSelect(item) {
       this.apiId = item.id
       this.apiLoad = true
+      window.scrollTo(0,0);
+      this.$router.push({ name: 'APIDetail', params: { apiId: this.apiId }})
     },
     formFilter(id) {
       this.categoryFilter = id
