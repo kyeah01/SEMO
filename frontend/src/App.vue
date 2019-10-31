@@ -9,15 +9,17 @@
           <router-link :to="{ name: 'Introduce' }">API란</router-link>
           <router-link :to="{ name: 'Category' }">API 카테고리</router-link>
           <router-link :to="{ name: 'Journal' }">개발 일지</router-link>
-          <router-link :to="{ name: 'AdminMain' }">개발자</router-link>
+          <router-link :to="{ name: 'AdminMain' }">관리자</router-link>
 
           <div class="nav-body">
             <input type="text" placeholder="Search" name="search" id="search">
             <label for="search" class="search-box"><fa-icon icon="search" class="nav-body_icon fa-search"></fa-icon></label>
           </div>
         </div>
-        <div>
-          <fa-icon icon="user-alt" class="nav-body_icon fa-user" @click="chk_profile = !chk_profile"></fa-icon>
+        <div class="nav-body">
+          <router-link :to="{ name: 'ProfilePage' }">
+            <fa-icon icon="user-alt" class="nav-body_icon fa-user" @click="chk_profile = !chk_profile"></fa-icon>
+          </router-link>
           <fa-icon icon="power-off" class="nav-body_icon fa-off" @click="chk_profile = !chk_profile"></fa-icon>
         </div>
       </nav>

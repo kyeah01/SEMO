@@ -23,6 +23,7 @@ module.exports = {
 					@import "@/styles/components/_listCard.scss";
 					@import "@/styles/components/_listDetail.scss";
 					@import "@/styles/view/_main.scss";
+					@import "@/styles/view/_profile.scss";
 					@import "@/styles/view/_category.scss";
 					@import "@/styles/view/_journal.scss";
 					@import "@/styles/icons/_loadSpinner.scss";

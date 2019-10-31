@@ -1,12 +1,13 @@
 <template>
   <div class="listCard">
     <div class="listCard-img" @click="apiSelect">
-      <img :src="imgSrc" alt="api image">
+      <img :src="item.img" alt="api image" v-if="item.img">
+      <img :src="imgSrc" alt="api image" v-else>
     </div>
     <div class="listCard-body">
-      <p>Tmap API</p>
-      <p class="listCard-tags">대중교통 | 유료 | JSON</p>
-      <p class="listCard-body">body</p>
+      <p>{{ item.title }}</p>
+      <p><span class="listCard-tags" v-for="(tag, index) in item.tags" :key="tag">{{ tag }} | </span></p>
+      <p class="listCard-body">{{ item.body }}</p>
     </div>
   </div>
 </template>
@@ -18,7 +19,7 @@ export default {
     item: {
       type: Object,
       required: true
-    }
+    },
   },
   data: () => {
     return {
