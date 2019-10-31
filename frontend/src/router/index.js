@@ -13,6 +13,9 @@ import AdminPage from '@/views/AdminPage'
 import AdminMain from '@/components/admin/AdminMain'
 import AdminPost from '@/components/admin/PostList'
 
+// Profile
+import ProfilePage from '@/views/ProfilePage'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -23,6 +26,7 @@ const router = new VueRouter({
       { path: '/category', component: CategoryPage, name: 'Category' },
       { path: '/category/:apiId', component: APIDetail, name: 'APIDetail' },
       { path: '/journal', component: JournalPage, name: 'Journal' },
+      { path: '/profile', component: ProfilePage, name: 'ProfilePage' },
       {
         path: '/admin', component: AdminPage, name: 'Admin',
         children: [
