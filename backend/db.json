@@ -1,0 +1,33 @@
+[{
+    "model": "api.category",
+    "pk": 1,
+    "fields": {
+        "name": "The Movie Database API",
+    }
+}, {
+    "model": "api.apisite",
+    "pk": 1,
+    "fields": {
+        "title": "The Movie Database API",
+        "url": "https://api.themoviedb.org/3/",
+        "category": 1,
+        "description": "sdf",
+        "howToUse": "sdfa",
+        "maxRequestCount": "asdf",
+        "expiredDate": "asdf",
+        "needAuthentication": true,
+        "contributors": [1]
+    }
+}, {
+    "model": "api.endpoints",
+    "pk": 1,
+    "fields": {
+        "apisite": 1,
+        "isAuthentication": true,
+        "pathParams": "z",
+        "queryString": "z",
+        "response": "z"
+    }
+}]
+
+
