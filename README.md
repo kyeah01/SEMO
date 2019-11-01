@@ -60,10 +60,6 @@
 
   ```bash
   $ npm run serve
-<<<<<<< Updated upstream
   ```
 
   
-=======
-  ```
->>>>>>> Stashed changes
