@@ -1,10 +1,17 @@
 .category {
   display: flex;
+
   &-contents {
+    margin-top: 30px;
+    padding: var(--space-md);
+    background-color: $white;
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+    min-height: 500px;
     // width: 100%;
     margin: {
       left: 270px;
-      right: 200px;
+      right: 100px;
     }
     text-align: start;
   }
@@ -12,5 +19,6 @@
   &-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }

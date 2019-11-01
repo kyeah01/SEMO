@@ -25,7 +25,7 @@
   display: flex;
   left: -240px;
   min-width: 260px;
-  height: 92vh;
+  height: 100vh;
   transition: left 0.5s;
 
   &_expand{
@@ -86,25 +86,31 @@
   }
 
   h2 {
+    font-size: 30px;
     padding-right: var(--space-sm);
     margin: 0px;
   }
 
   &--items {
     min-width: 240px;
-    margin-top: 100px;
+    margin-top: 80px;
     ul {
       margin: var(--space-sm) 0px ;
       list-style: none;
       padding: 0px;
 
       li {
-        font-size: 20px;
+        font-size: 24px;
+        padding: {
+          top: var(--space-md);
+          bottom: var(--space-md);
+        }
+        border-bottom:  1px dashed $tertiary;
         cursor: pointer;
       }
 
       li:hover {
-        background-color: $tertiary;
+        background-color: $primary-light;
       }
     }
   }
