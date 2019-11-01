@@ -3,7 +3,6 @@
 </p>
 
 
-
 <h1>Table of Contents</h1>
 
 [TOC]
@@ -61,6 +60,10 @@
 
   ```bash
   $ npm run serve
+<<<<<<< Updated upstream
   ```
 
   
+=======
+  ```
+>>>>>>> Stashed changes
