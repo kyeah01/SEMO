@@ -20,7 +20,6 @@ class APIList(models.Model):
     howToUse = models.TextField() 
     maxRequestCount = models.TextField()
     expiredDate = models.TextField()
-    needAuthentication = models.BooleanField()
     
     class Meta:
         abstract = True
