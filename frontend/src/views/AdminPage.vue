@@ -66,11 +66,12 @@ div {
   &-contents {
     margin: {
       top: var(--space-md);
+      bottom: var(--space-md);
       left: 270px;
       right: 200px;
     }
     width: 100%;
-    height: 800px;
+    min-height: 800px;
     position: relative;
     text-align: start;
     background-color: white;
