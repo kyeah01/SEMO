@@ -7,7 +7,7 @@
         <h2>{{ developers[0].title }}</h2>
       </template>
       <template v-slot:list>
-        <li v-for="item in developers.slice(1, developers.length-1)" :key="item.name">{{ item.name }}</li>
+        <li v-for="item in developers.slice(1, developers.length)" :key="item.name">{{ item.name }}</li>
       </template>
     </Sidebar>
 

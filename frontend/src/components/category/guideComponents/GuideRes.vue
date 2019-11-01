@@ -25,7 +25,7 @@
     <table class="Guide-ep-subTable">
       <thead>
         <tr>
-          <th  :class="[{ 'select-Lang-act' : is_activeLang === index}, 'select-Lang']" v-for="(item, index) in resData" :key="index" @click="langSelect(index, item.title)"><h3>{{ item.title }}</h3></th>
+          <th :class="[{ 'select-Lang-act' : is_activeLang === index}, 'select-Lang']" colspan="2" v-for="(item, index) in resData" :key="index" @click="langSelect(index, item.title)"><h3>{{ item.title }}</h3></th>
         </tr>
       </thead>
       <tbody class="resTable" v-if="is_activeLang===0">
@@ -57,7 +57,7 @@
       <tbody class="resTable" v-if="is_activeLang===1">
         <tr class="Guide-ep-inputBox" colspan="8">
           <th>
-            <pre style="text-align:start;">
+            <pre style="text-align:start; user-select: text; width:750px;">
 {
   "adult": false,
   "backdrop_path": "/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg",
@@ -160,10 +160,6 @@ export default {
       resData: [
         {title : "Schema"},
         {title : "Example"},
-        {title : ""},
-        {title : ""},
-        {title : ""},
-        {title : ""},
       ],
       responses: [
         { status: '200'},
