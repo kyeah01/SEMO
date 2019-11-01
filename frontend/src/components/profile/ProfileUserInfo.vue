@@ -1,57 +1,68 @@
 <template>
-  <div class="category">
+  <div class="profile_contents--title">
+    <h1>Occupation</h1>
+    <h4>개발자</h4>
+    <h1>Language</h1>
+    <h4>Vue</h4>
 
-    <!-- sidebar -->
-    <Sidebar>
-      <template v-slot:title>
-        <h2 style="cursor:pointer;" @click="formFilter(0,'API LIST')">{{ sideBarItems[0].title }}</h2>
-      </template>
-      <template v-slot:list>
-        <li v-for="item in sideBarItems.slice(2, sideBarItems.length)" :key="item.name" @click="formFilter(item.id, item.name)">{{ item.name }}</li>
-      </template>
-    </Sidebar>
+    <select name="apiCategory" id="apiCategory" v-model="categoryFillter" @change="filter()">
+      <option :value="item.id" v-for="(item, index) in apiCategory" :key="index">{{ item.name }}</option>
+    </select>
 
-    <!-- content -->
-    <div class="category-contents">
-      <h1>{{ categoryFilterName }}</h1>
-      <div class="category-list" v-if="!apiLoad">
-        <div v-for="item in ApiLists" :key="item.id">
-          <APIListCard :item="item" @select="apiSelect" v-if="categoryFilter===0"/>
-          <APIListCard :item="item" @select="apiSelect" v-if="categoryFilter===item.fillterid"/>
-        </div>
-      </div>
-      <!-- <div class="category-list" v-if="apiLoad">
-        <APIDetail :apiId="apiId" @goList="apiLoad = !apiLoad"/>
-      </div> -->
+    <select name="apiList" id="apiList" v-model="keyData.detail">
+      <option :value="{id:item.fillterid, title:item.title}" v-for="(item, index) in fltList" :key="index" >{{ item.title }}</option>
+    </select>
+
+    <label for="keyInput">API KEY</label>
+    <input type="text" id="keyInput" v-model="keyData.key">
+    <label for="keyValue">Key 만료일</label>
+    <input type="date" id="keyValue" v-model="keyData.date">
+
+    <fa-icon icon="plus" class="btn" @click="addAPIKey"> </fa-icon>
+
+    <div style="height: 280px;" >
+      <table style="width: 100%;" v-if="paginatedData[0]">
+        <tr style="font-size: 25px;">
+          <th>Category</th>
+          <th>API</th>
+          <th>Key</th>
+          <th>Date</th>
+        <tr/>
+        <tr v-for="(item, index) in paginatedData" :key="index" style="font-size: 20px;">
+          <td>{{ apiCategory[item.detail.id].name }}</td>
+          <td>{{ item.detail.title }}</td>
+          <td>{{ item.key }}</td>
+          <td>{{ item.date }}</td>
+          <fa-icon icon="trash-alt"></fa-icon>
+        </tr>
+      </table>
     </div>
+    <div style="height:20px;">
+    <div class="profile_pagenation" v-if="pageCount >= 2 ">
+      <span @click="paginationBtn(false)">prev</span>
+      <span v-for="(i, index) in pageCount" :key="index" :class="['pageBtn', {'pageBtn-hl': pageNum === index}]">{{ i }}</span>
+      <span @click="paginationBtn(true)">next</span>
+    </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-import Sidebar from "@/components/sidebar"
-import APIListCard from "@/components/category/APIListCard"
-import APIDetail from "@/components/category/APIDetail"
-
 export default {
-  name: 'CategoryPage',
-  components: {
-    Sidebar,
-    APIListCard,
-    APIDetail,
+ name : 'ProfileUserInfo',
+ props: {
+    pageSize: {
+      type: Number,
+      required: false,
+      default: 6
+    }
   },
-  data() {
-    return {
-      sideBarItems : [
-        {title : 'API LIST'},
-        {subtitle : ''},
-        {name: '공공데이터', id:1},
-        {name: '대중교통', id:2},
-        {name: '음악', id:3},
-        {name: '영화', id:4},
-        {name: '사진', id:5},
-        {name: '미디어', id:6},
-        {name: '날씨', id:7},
-      ],
+ data() {
+   return {
+      pageNum : 0,
+      keyData: {detail: {}, key : "", date: ""},
+      userKeyDataList : [],
       ApiLists: [
         {id: 1, title: 'TMDB', fillterid: 4, img:require('@/assets/tmdb.png'), tags:["영화","movie","무료"],body:"영화 정보"},
         {id: 7, title: 'IMDB', fillterid: 4, img:require('@/assets/imdb.png'), tags:["영화","movie","무료"],body:"영화 정보"},
@@ -89,27 +100,68 @@ export default {
         {id: 31, title: 'api', fillterid: 1, img:require('@/assets/seoul.png'), tags:["공공데이터","해외통신원","무료"],body:"국제 협력 정보 시스템에서 제공하는 정보"},
         {id: 32, title: 'api', fillterid: 1, img:require('@/assets/seoul.png'), tags:["공공데이터","해외통신원","무료"],body:"국제 협력 정보 시스템에서 제공하는 정보"},
       ],
-      categoryFilter : 0,
-      categoryFilterName : "API LIST",
-      apiLoad: false,
-      apiId: '',
-    }
+      userImg : require('@/assets/userimg.png'),
+      apiCategory : [
+        {name: 'ALL API', id:0},
+        {name: '공공데이터', id:1},
+        {name: '대중교통', id:2},
+        {name: '음악', id:3},
+        {name: '영화', id:4},
+        {name: '사진', id:5},
+        {name: '미디어', id:6},
+        {name: '날씨', id:7},
+      ],
+      categoryFillter : 0,
+      fltList : []
+   }
+ },
+mounted() {
+  this.fltList = this.ApiLists
+},
+computed: {
+  pageCount () {
+    let listLeng = this.userKeyDataList.length, listSize = this.pageSize, page = Math.floor((listLeng - 1) / listSize) + 1
+    return page
   },
-  methods: {
-    apiSelect(item) {
-      this.apiId = item.id
-      this.apiLoad = true
-      window.scrollTo(0,0);
-      this.$router.push({ name: 'APIDetail', params: { apiId: this.apiId }})
-    },
-    formFilter(id, name) {
-      this.categoryFilterName = name
-      this.categoryFilter = id
-    }
+  paginatedData () {
+    const start = this.pageNum * this.pageSize, end = start + this.pageSize;
+    return this.userKeyDataList.slice(start, end)
   }
+},
+ methods: {
+   paginationBtn (bool) {
+      if (bool) {
+        if (this.pageCount === this.pageNum+1) {return}
+        this.pageNum++
+      } else {
+        if (this.pageNum === 0) {return}
+        this.pageNum--
+      }
+    },
+
+   filter() {
+     if (this.categoryFillter === 0 ) {
+      return this.fltList = this.ApiLists
+     }
+     this.fltList = this.ApiLists.filter(id => id.fillterid === this.categoryFillter)
+   },
+   addAPIKey() {
+     if (this.keyData.detail.id != "" && this.keyData.detail.title != "" && this.keyData.key != "" && this.keyData.date != "") {
+      this.userKeyDataList.push(this.keyData)
+      this.keyData = {detail:{}, key : "", date: ""}
+     }
+     else {
+       alert("모든 값을 입력 하십시오.")
+     }
+   }
+ }
 }
 </script>
 
-<style>
-
+<style lang="scss" scope>
+.pageBtn {
+  &-hl {
+    border-bottom: 1px solid blue;
+  }
+}
 </style>
