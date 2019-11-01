@@ -33,7 +33,7 @@
       <tbody>
         <tr>
           <th class="Guide-ep-inputBox" colspan="8">
-            <pre style="font-size:18px;" v-if="is_activeLang===0">
+            <pre style="font-size:18px; user-select: text;" v-if="is_activeLang===0">
 var data = "{}";
 
 var xhr = new XMLHttpRequest();
@@ -48,7 +48,7 @@ xhr.addEventListener("readystatechange", function () {
 xhr.open("GET", "https://api.themoviedb.org/3/movie/%7Bmovie_id%7D?language=en-US&api_key=%3C%3Capi_key%3E%3E");
 
 xhr.send(data);</pre>
-            <pre style="font-size:18px;" v-if="is_activeLang===1">
+            <pre style="font-size:18px; user-select: text;" v-if="is_activeLang===1">
 import requests
 
 url = "https://api.themoviedb.org/3/movie/%7Bmovie_id%7D"
