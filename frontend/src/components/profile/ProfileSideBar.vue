@@ -4,7 +4,7 @@
         <img :src="userImg" alt="userimg" style="max-width: 190px; max-height: 200px;">
       </div>
       <div class="profile_SideBar--title">
-        User Name
+        SEMO
       </div>
       <div class="profile_SideBar--body">
         <fa-icon icon="search" class="fa-bodyicon" @click="chkView(0)"> </fa-icon>

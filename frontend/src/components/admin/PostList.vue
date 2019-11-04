@@ -19,10 +19,10 @@
 
   </table>
 
-  <div>
-    <span @click="paginationBtn(false)">prev</span>
-    <span v-for="(i, index) in pageCount" :key="index" :class="['pageBtn', {'pageBtn-hl': pageNum === index}]">{{ i }}</span>
-    <span @click="paginationBtn(true)">next</span>
+  <div style="text-align:center;">
+    <span @click="paginationBtn(false)" class="btn btn--md" :class="[{'btn--tertiary':pageNum === 0}, 'btn--primary']">prev</span>
+    <span v-for="(i, index) in pageCount" :key="index" :class="['pageBtn', {'pageBtn-hl': pageNum === index}]" @click="paginationClick(i)">{{ i }}</span>
+    <span @click="paginationBtn(true)" class="btn btn--md" :class="[{'btn--tertiary':pageNum === pageCount-1}, 'btn--primary']">next</span>
   </div>
 </div>
 </template>
@@ -92,6 +92,9 @@ export default {
         this.pageNum--
       }
     },
+    paginationClick(i) {
+      this.pageNum = i-1
+    },
     selectAll(bool) {
       if (bool) {
         if (!this.allSelect) {
@@ -123,9 +126,16 @@ th, tr {
   border-bottom: 1px solid rgba(124, 124, 124, 0.479);
 }
 
+.btn {
+      margin: 0 var(--space-lg);
+    }
 .pageBtn {
+  font-size: 20px;
+  margin: 0 var(--space-sm);
+
   &-hl {
-    border-bottom: 1px solid blue;
+    color: $primary;
+    border-bottom: 1px solid $primary;
   }
 }
 </style>

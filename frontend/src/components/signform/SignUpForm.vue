@@ -57,9 +57,10 @@ export default {
     async registSend() {
       this.loadSpinner = true
       var res = await api.regist(this.username, this.password)
+
       setTimeout(() => {
         this.loadSpinner = false
-        this.$router.push({ name: 'Category' })
+        this.$router.push({ name: 'Introduce' })
       }, 3000);
 
     }

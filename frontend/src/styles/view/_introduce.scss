@@ -1,4 +1,14 @@
-.introduce_header {
-  display: flex;
-  padding: var(--space-md);
+.introduce{
+  &_header {
+    background-color: white;
+    padding: var(--space-md);
+  }
+
+  &_title {
+    position: absolute ;
+    font-size: 40px;
+    right: 20%;
+    top: 15%;
+    color: white;
+  }
 }

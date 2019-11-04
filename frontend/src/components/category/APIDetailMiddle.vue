@@ -18,10 +18,10 @@
     </div>
     <!-- carousel -->
     <div id="slideImg" style="display:flex;">
-      <div v-for="item in items" :key="item">
-        <img :src="imgSrc" alt="">
+      <div v-for="(item, index) in items" :key="index">
+        <img :src="imgSrc[index]" alt="">
         <h4>{{ item }}</h4>
-        <div>어딜 보시나요</div>
+        <div><span v-html="howToUse[index]"></span></div>
       </div>
     </div>
 
@@ -34,8 +34,13 @@ export default {
   name: 'ApiDetailMiddle',
   data: () => {
     return {
-      imgSrc: 'http://toeic.ybmclass.com/toeic/img/noimage.gif',
-      items: [1, 2, 3],
+      imgSrc: [require('@/assets/tmdb_1.png'), require('@/assets/tmdb_2.png'), require('@/assets/tmdb_3.png')],
+      items: ["1. 회원가입", "2. API Key 요청", "3. API Key 확인"],
+      howToUse : [
+        " 1-1. <a href='https://www.themoviedb.org/account/signup' alt='TMDB' style='text-decoration:none; color:blue;' target='_blank'>TMDB</a> 사이트 로 접속하여 화원가입 합니다.<br><br> 1-2. 회원가입시 작성한 E-mail로 전송된 E-mail 검증을 완료 합니다. ",
+        " 2-1. <b>프로필 => 계정설정</b> 을 클릭합니다. <br><br> 2-2. 좌측 네비게이션에서 <b>API</b>를 클릭하여 API 설정 창으로 이동합니다. <br><br> 2-3. <b>APi Key 요청</b> 란의 <b style='color:#ff567a;'>click here</b>를 눌러 요청 페이지로 이동합니다. <br><br> 2-4. 안내 사항에 따라 작성한 후 API Key 를 발급 받습니다.",
+        " 3-1. 요청 받은 API Key를 확인합니다. <br><br> 3-2. API Key의 경우 다른 이에게 공개 되지 않도록 관리합니다."
+        ],
       defaultPos: 0,
       slideCnt: 1,
     }
