@@ -36,6 +36,8 @@ class EditedList(APIList):
 class EndPoints(models.Model):
     apisite = models.ForeignKey(APISite, on_delete=models.CASCADE)
     isAuthentication = models.BooleanField()
+    method = models.CharField(max_length=30)
+    name = models.TextField()
     pathParams = models.TextField()
     queryString = models.TextField()
     response = models.TextField()
@@ -51,3 +53,7 @@ class Ratings(models.Model):
         validators=[MaxValueValidator(5), MinValueValidator(1)]
     )
     rating_date = models.CharField(max_length=200)
+
+class GuideCode(models.Model):
+    lang = models.CharField(max_length=10)
+    code = models.TextField()
