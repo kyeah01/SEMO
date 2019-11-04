@@ -1,20 +1,9 @@
 <template>
-  <div>
-    <div class="profile_contents--list" v-if="toggleViews===0">
-        <h1> 최근 조회 API </h1>
-        <div class="category-list">
-          <div v-for="item in ApiLists" :key="item.id">
-            <APIListCard :item="item"/>
-          </div>
-        </div>
-      </div>
-
-      <div class="profile_contents--list" v-if="toggleViews===1">
-        <h1> 내가 작성한 게시글 </h1>
-        <div class="category-list">
-          <div v-for="item in ApiLists" :key="item.id">
-            <APIListCard :item="item"/>
-          </div>
+  <div class="profile_contents--list">
+      <h1> 최근 조회 API </h1>
+      <div class="category-list">
+        <div v-for="item in ApiLists" :key="item.id">
+          <APIListCard :item="item"/>
         </div>
       </div>
   </div>
@@ -22,15 +11,10 @@
 
 <script>
 import APIListCard from "@/components/category/APIListCard"
+import store from "@/store"
 
 export default {
   name : 'ProfileContents',
-  props: {
-    toggleViews: {
-      type: Number,
-      required: true
-    },
-  },
   components: {
     APIListCard
   },
@@ -50,7 +34,9 @@ export default {
         {id: 34, title: '자동차 경로탐색 API', fillterid: 2, img:require('@/assets/car.jpg'), tags:["교통정보","보행자","무료"],body:"최종 이용자를 원하는 목적지까지 안내하는 API"},
       ],
    }
- }
+ },
+ methods: {
+ },
 }
 </script>
 

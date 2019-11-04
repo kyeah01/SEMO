@@ -3,15 +3,18 @@
     <ProfileSideBar @chkViews="chkView"/>
     <div class="profile_contents">
       <ProfileUserInfo/>
-
-      <ProfileContents :toggleViews="toggleViews"/>
+      <transition name="fade" mode="out-in">
+        <ProfileContentsListView  v-if="toggleViews===0"/>
+        <ProfileContentsListPost  v-if="toggleViews===1"/>
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
 import ProfileSideBar from '@/components/profile/ProfileSideBar'
-import ProfileContents from '@/components/profile/ProfileContents'
+import ProfileContentsListView from '@/components/profile/ProfileContentsListView'
+import ProfileContentsListPost from '@/components/profile/ProfileContentsListPost'
 import ProfileUserInfo from '@/components/profile/ProfileUserInfo'
 
 
@@ -19,7 +22,8 @@ export default {
  name : 'ProfilePage',
  components: {
    ProfileSideBar,
-   ProfileContents,
+   ProfileContentsListView,
+   ProfileContentsListPost,
    ProfileUserInfo,
  },
  data() {
