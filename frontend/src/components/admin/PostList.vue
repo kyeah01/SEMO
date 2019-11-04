@@ -1,6 +1,6 @@
 <template>
 <div>
-  <button @click="addPost()">add post</button>
+  <router-link :to="{ name: 'APIWrite' }">add post</router-link>
   <table>
 
     <thead>
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import router from '@/router'
+
 export default {
   name: 'PostList',
   props: {
@@ -102,9 +104,6 @@ export default {
       } else {
         this.allSelect = false
       }
-    },
-    addPost() {
-      console.log('우와')
     }
   }
 }
