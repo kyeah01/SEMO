@@ -87,6 +87,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.listDetail {
+  min-height: 30%;
+}
 </style>
