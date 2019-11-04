@@ -63,7 +63,7 @@ export default {
         ]
       ],
       tags: [
-        {idx : 0, name: '지도', btnClass: "btn--primary"},
+        {idx : 0, name: '영화', btnClass: "btn--primary"},
         {idx : 1, name: '무료', btnClass: "btn--success"},
         {idx : 2, name: 'XML', btnClass: "btn--warning"}
       ],

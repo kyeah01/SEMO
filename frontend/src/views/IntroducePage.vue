@@ -1,6 +1,13 @@
 <template>
   <div>
-    사이트 소개 페이지
+    <div class="main_header">
+      <img class="main_header-img" src="https://uploads.actionvfx.com/header_photo/spina/article/222/6-Common-Nodes-for-Nuke-Beginners-Banner-compressor.jpg" alt="" style="height: 823px;">
+      <div class="introduce_title">
+        <h1>Welcome</h1>
+        <h1>To</h1>
+        <h1>Simple & Easy Manual of API</h1>
+      </div>
+    </div>
     <div class="introduce_header">
       <div>
         <p>당신을 위한 API 추천 사이트</p>

@@ -80,9 +80,9 @@ export default {
   data: () => {
     return {
       dataCnt: [
-        { name: 'Users', count: 139, collection: { labels: [], data: [40, 20, 30, 50, 90, 10, 20]}, color: '#0090D9', icon: 'user-friends' },
-        { name: 'Add Post', count: 256, collection: { labels: [], data: [10, 1, 5, 7, 4, 20, 14]}, color: '#37A8AF', icon: 'calendar-plus' },
-        { name: 'Edit Post', count: 76, collection: { labels: [], data: [1, 10, 15, 27, 14, 2, 4]}, color: '#3E739D', icon: 'edit' },
+        { name: 'Users', count: 6, collection: { labels: [], data: [0, 0, 2, 3, 1, 0, 0]}, color: '#0090D9', icon: 'user-friends' },
+        { name: 'Add Post', count: 15, collection: { labels: [], data: [10, 1, 1, 1, 2, 0, 0]}, color: '#37A8AF', icon: 'calendar-plus' },
+        { name: 'Edit Post', count: 32, collection: { labels: [], data: [1, 10, 15, 8, 3, 11, 4]}, color: '#3E739D', icon: 'edit' },
         { name: 'Requests', count: 784, collection: { labels: [], data: [302, 123, 83, 97, 65, 110, 435]}, color: '#f56954', icon: 'project-diagram' },
       ],
       tableName: ['API ID', '제목', '등록일자', '카테고리', '수정요청'],

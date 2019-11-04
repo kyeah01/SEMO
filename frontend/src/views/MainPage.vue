@@ -7,10 +7,6 @@
           <SignUpForm v-if="!chk_Sign" @toggle_Sign="toggle_Sign"/>
         </transition>
       </div>
-      <div>
-        <p>Welcome home</p>
-        <p>developers</p>
-      </div>
       <Footer/>
   </div>
 </template>
