@@ -3,7 +3,6 @@ import json
 from django.forms.models import model_to_dict
 from rest_framework import serializers
 
-
 from .models import APISite, EditedList, RegisterList, Ratings, GuideCode, EndPoints
 
 class APISiteListSerializer(serializers.ModelSerializer):
@@ -49,14 +48,14 @@ class EndPointsSerializer(serializers.ModelSerializer):
         for guide in guides:
             guide.pop('_state', None)
 
+        url = obj.apisite.url + json.loads(obj.pathParams).get('sample')
+
         for guide in guides:
-            guide['code'] = guide['code'].replace('{{ method }}', obj.method)
-            guide['code'] = guide['code'].replace('{{ url }}', obj.apisite.url + obj.pathParams if obj.pathParams[0] != '/' else obj.apisite.url + obj.pathParams[1:])
-            guide['code'] = guide['code'].replace('{{ params }}', str(replacement_List))
+            guide['code'] = guide['code'].replace('{{ method }}', obj.method.lower())
+            guide['code'] = guide['code'].replace('{{ url }}', url)
+            if obj.method == "POST":
+                guide['code'] = guide['code'].replace('{{ params }}', str(replacement_List))
+                guide['code'] = guide['code'].replace('params', 'data')
+            else:
+                guide['code'] = guide['code'].replace('{{ params }}', str(replacement_List))
         return guides
-
-
-class GuideCodeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GuideCode
-        fields = '__all__'
