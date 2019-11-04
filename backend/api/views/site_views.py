@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.contrib import admin
-
+# 우주최강바보
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, SAFE_METHODS
 
-from api.models import APISite, EditedList
-from api.serializers import APISiteListSerializer, APISiteDetailSerializer, EditRequestListSerializer
+from api.models import APISite, EditedList, GuideCode, EndPoints
+from api.serializers import APISiteListSerializer, APISiteDetailSerializer, EditRequestListSerializer, GuideCodeSerializer, EndPointsSerializer
 
 
 class APIListView(APIView):
@@ -113,3 +113,16 @@ class DocsRequestView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class EndPointsView(APIView):
+    def get(self, requests, ep_pk):
+        endpoints = EndPoints.objects.all()
+        serializer = EndPointsSerializer(endpoints, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class CodeGenerator(APIView):
+    def get(self, request, ep_pk):
+        codes = GuideCode.objects.all()
+        serializer = GuideCodeSerializer(codes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
