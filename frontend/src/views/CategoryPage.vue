@@ -90,6 +90,7 @@ export default {
         {id: 16, title: 'FaceBook', fillterid: 6, img:require('@/assets/facebook.png'), tags:["Chat BOT","AI","무료"],body:"Facebook ChatBot AI"},
         {id: 7, title: 'IMDB', fillterid: 4, img:require('@/assets/imdb.png'), tags:["영화","movie","무료"],body:"영화 정보"},
         {id: 1, title: 'TMDB', fillterid: 4, img:require('@/assets/tmdb.png'), tags:["영화","movie","무료"],body:"영화 정보"},
+        {id: 41, title: '등록테스트', fillterid: 1, img:'', tags:["등록테스트"],body:"등록테스트"},
       ],
       categoryFilter : 0,
       categoryFilterName : "API LIST",

@@ -6,8 +6,12 @@
       <h2>{{ sideBarItems[0].title }}</h2>
     </template>
     <template v-slot:list>
-      <router-link v-for="route in routes[routes.length - 1].children" :key="route.path" :to="{name: route.name}">
-        {{ route.name }}
+       <router-link v-for="route in routes[routes.length - 1].children" :key="route.path" :to="{name: route.name}" style="text-decoration:none; color: black;">
+         <ul style="margin:0px;">
+           <li>
+          {{ route.name }}
+          </li>
+        </ul>
       </router-link>
     </template>
   </Sidebar>

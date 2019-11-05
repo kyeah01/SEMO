@@ -5,7 +5,7 @@
         <h2>{{ sideBarItems[0].title }}</h2>
       </template>
       <template v-slot:list>
-        <li v-for="item in sideBarItems.slice(2, sideBarItems.length)" :key="item.name" @click="formFilter(item.id)">{{ item.name }}</li>
+        <li v-for="(item, index) in sideBarItems.slice(2, sideBarItems.length)" :key="index" @click="formFilter(item.id)">{{ item.name }}</li>
       </template>
     </Sidebar>
 

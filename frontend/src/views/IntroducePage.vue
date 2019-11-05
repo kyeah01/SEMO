@@ -10,12 +10,17 @@
     </div>
     <div class="introduce_header">
       <div>
-        <p>당신을 위한 API 추천 사이트</p>
-        <span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took  a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  but also the leap into electronic typesetting,  remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing  Lorem Ipsum passages, and more recently  with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-        </span>
+        <img src="https://user-images.githubusercontent.com/45934087/68111269-13f85400-ff32-11e9-832b-4af68a2dd19a.png" alt="">
+        <img src="https://user-images.githubusercontent.com/45934087/68112833-a51cfa00-ff35-11e9-9caa-d8a26bab4e79.png" alt="">
+        <img src="https://user-images.githubusercontent.com/45934087/68112851-b108bc00-ff35-11e9-9960-3f7e0312f1d8.png" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
       </div>
-      <img src="https://d1.awsstatic.com/serverless/New-API-GW-Diagram.c9fc9835d2a9aa00ef90d0ddc4c6402a2536de0d.png" alt="">
+
     </div>
   </div>
 </template>
