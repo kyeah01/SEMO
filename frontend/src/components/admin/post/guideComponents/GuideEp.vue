@@ -73,8 +73,8 @@ export default {
     return {
       // props
       endPoint: [
-        {methods: 'GET', contents: "Get Images"},
-        {methods: 'GET', contents: "Get Details"},
+        {methods: 'GET', contents: "Details"},
+        {methods: 'GET', contents: "Images"},
         {methods: 'POST', contents: "Rate Monie"},
         {methods: 'DELETE', contents: "Delete Rating"},
         ],

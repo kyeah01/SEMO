@@ -1,8 +1,9 @@
 <template>
 <div>
-  <router-link :to="{ name: 'APIWrite' }">add post</router-link>
+    <div class="test">
+      <h1>Admin Post</h1> <router-link :to="{ name: 'APIWrite' }" class="btn btn--success btn--xl">API 추가</router-link>
+    </div>
   <table>
-
     <thead>
       <tr>
         <th><input type="checkbox" v-model="allSelect" @click="selectAll(true)"></th>
@@ -115,9 +116,7 @@ export default {
 <style lang="scss" scoped>
 table {
   border-collapse: collapse;
-  margin: {
-    top: 7%;
-  }
+  margin-bottom: var(--space-lg);
   width: 100%;
   height: 600px;
 }
