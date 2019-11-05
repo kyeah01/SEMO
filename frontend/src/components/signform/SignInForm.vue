@@ -1,12 +1,15 @@
 <template>
-  <div class="signForm">
+  <div class="signForm" :class="{'lds-box' : loadSpinner}">
+    <div v-show="loadSpinner" class="lds-signup">
+      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
     <form autocomplete="off">
         <label for="username">username</label>
-        <input type="text" id="username"  autocomplete="off">
+        <input type="text" id="username"  autocomplete="off" v-model="username">
 
         <label for="password">password</label>
-        <input type="password" id="password">
-        <span class="btn btn--primary" @click="toggle_Sign" style="margin-bottom: var(--space-sm); font-size: 20px; font-weight:500;">로그인</span>
+        <input type="password" id="password" v-model="password">
+        <span class="btn btn--primary" @click="registSend" style="margin-bottom: var(--space-sm); font-size: 20px; font-weight:500;">로그인</span>
         <div class="separater"></div>
         <span style="text-align: center; font-weight:700;"> Or</span>
         <span class="btn btn--google" style="margin-bottom: var(--space-sm);">
@@ -29,9 +32,14 @@
 </template>
 
 <script>
+import api from '@/api'
+
 export default {
   data() {
-    return{
+    return {
+      username: '',
+      password: '',
+      loadSpinner: false,
       google_logo : require('@/assets/google_light.svg'),
       kakao_logo : require('@/assets/kakaotalk.svg')
     }
@@ -39,6 +47,16 @@ export default {
   methods: {
     toggle_Sign() {
       this.$emit("toggle_Sign")
+    },
+    async registSend() {
+      this.loadSpinner = true
+      var res = await api.regist(this.username, this.password)
+
+      setTimeout(() => {
+        this.loadSpinner = false
+        this.$router.push({ name: 'Introduce' })
+      }, 3000);
+
     }
   }
 
