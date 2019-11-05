@@ -32,7 +32,10 @@
   min-height: 30%;
   width: 91%;
   &-guide {
-    height: 64%;
+    min-height: 40%;
+  }
+  &-tall {
+    min-height: 43%;
   }
 }
 

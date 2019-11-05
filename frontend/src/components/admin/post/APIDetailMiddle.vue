@@ -178,5 +178,10 @@ input[type="file"] {
 }
 textarea {
   margin-left: 30px;
+  border: {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 }
 </style>
