@@ -195,7 +195,7 @@ computed: {
      this.fltList = this.ApiLists.filter(id => id.fillterid === this.categoryFillter)
    },
    addAPIKey() {
-     if (this.keyData.detail.id != "" && this.keyData.detail.title != "" && this.keyData.key != "" && this.keyData.date != "") {
+     if (this.keyData.detail.id != "" && this.keyData.detail.title != "" && this.keyData.key != "" ) {
       this.userKeyDataList.push(this.keyData)
       this.keyData = {detail:{}, key : "", date: ""}
      }

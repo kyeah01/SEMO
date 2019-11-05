@@ -41,7 +41,7 @@ export default {
   },
   data: () => {
     return {
-      tableName: ['API ID', '제목', '등록일자', '카테고리', '등록'],
+      tableName: ['API ID', '제목', '등록일자', '카테고리', '요청 현황'],
       pageNum: 0,
       checkedPost: [],
       allSelect: false,
@@ -105,9 +105,6 @@ export default {
         this.allSelect = false
       }
     },
-    addPost() {
-      console.log('우와')
-    }
   }
 }
 </script>

@@ -8,7 +8,7 @@
         <div class="nav-items">
           <router-link :to="{ name: 'Category' }">API 카테고리</router-link>
           <router-link to="" style="color: #d8d8d8;">개발 일지</router-link>
-          <router-link :to="{ name: 'AdminMain' }">관리자</router-link>
+          <router-link :to="{ name: 'AdminMain' }" v-if="userData.username">관리자</router-link>
 
           <div class="nav-body">
             <input type="text" placeholder="Search" name="search" id="search">
