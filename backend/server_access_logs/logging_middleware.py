@@ -11,13 +11,6 @@ class AccessLogsMiddleware(object):
         self.get_response = get_response
 
     def __call__(self, request):
-        # create session
-        if not request.session.session_key:
-            request.session.create()
-        # Getting user using session
-        session_key = request.session.session_key
-        session = Session.objects.get(session_key=session_key)
-
         if request.user.is_anonymous:
             request.user.username = 'anonymous'
         user = request.user

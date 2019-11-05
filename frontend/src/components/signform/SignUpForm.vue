@@ -33,8 +33,8 @@
           <option value="6">파이썬</option>
           <option value="7">파이썬</option>
         </select>
-        <span class="btn btn--tertiary" @click="registSend"  style="font-size: 20px; font-weight:500;">가입</span>
-        <span class="btn btn--primary" @click="toggle_Sign"  style="font-size: 20px; font-weight:500;">돌아가기</span>
+        <span class="btn btn--success" @click="registSend"  style="font-size: 20px; font-weight:500;">가입</span>
+        <span class="btn btn--primary" @click="toggle_Sign"  style="font-size: 20px; font-weight:500; margin-top:10px;" >돌아가기</span>
     </form>
   </div>
 </template>
@@ -57,10 +57,10 @@ export default {
     async registSend() {
       this.loadSpinner = true
       var res = await api.regist(this.username, this.password)
-      console.log(res)
+
       setTimeout(() => {
         this.loadSpinner = false
-        this.$router.push({ name: 'Category' })
+        this.$router.push({ name: 'Introduce' })
       }, 3000);
 
     }

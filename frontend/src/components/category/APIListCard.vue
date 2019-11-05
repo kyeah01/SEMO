@@ -6,7 +6,7 @@
     </div>
     <div class="listCard-body">
       <p>{{ item.title }}</p>
-      <p><span class="listCard-tags" v-for="(tag, index) in item.tags" :key="tag">{{ tag }} | </span></p>
+      <p><span class="listCard-tags" v-for="(tag, index) in item.tags" :key="index">{{ tag }} | </span></p>
       <p class="listCard-body">{{ item.body }}</p>
     </div>
   </div>

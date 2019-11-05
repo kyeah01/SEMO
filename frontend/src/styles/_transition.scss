@@ -4,6 +4,12 @@
 .fade-enter, .fade-leave-active {
   opacity: 0;
 }
+.fade-asd-enter-active, .fade-asd-leave-active {
+  transition: all .5s ease;
+}
+.fade-asd-enter, .fade-asd-leave-active {
+  opacity: 0;
+}
 
 .slide-enter-active {
   -moz-transition-duration: 0.3s;

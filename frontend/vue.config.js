@@ -26,6 +26,7 @@ module.exports = {
 					@import "@/styles/view/_profile.scss";
 					@import "@/styles/view/_category.scss";
 					@import "@/styles/view/_journal.scss";
+					@import "@/styles/view/_introduce.scss";
 					@import "@/styles/icons/_loadSpinner.scss";
 					@import "@/styles/icons/_times.scss";
 				`

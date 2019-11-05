@@ -1,47 +1,93 @@
 <template>
   <div class="profile_contents--title">
-    <h1>Occupation</h1>
-    <h4>개발자</h4>
-    <h1>Language</h1>
-    <h4>Vue</h4>
+    <diV>
+      <h1 style="font-size:30px;">SEMO's Information</h1>
+      <table style="width: 100%;">
+        <tr>
+          <th><fa-icon icon="user-tie" class="fa-tie"></fa-icon></th>
+          <th style="font-size: 30px; width: 30%;">개발자</th>
+          <th><fa-icon icon="code" class="fa-tie"></fa-icon></th>
+          <th style="font-size: 30px; width: 30%;">파이썬</th>
+        </tr>
+        <tr>
+          <td style="color: grey;">(occupation)</td>
+          <td></td>
+          <td style="color: grey;">(language)</td>
+          <td></td>
+        </tr>
+      </table>
+    </diV>
 
-    <select name="apiCategory" id="apiCategory" v-model="categoryFillter" @change="filter()">
-      <option :value="item.id" v-for="(item, index) in apiCategory" :key="index">{{ item.name }}</option>
-    </select>
+    <h1 style="font-size:30px;">API Key Storage</h1>
+    <div class="profile_keyStorage">
+      <div class="profile_keyStorage--select">
+        <ul>
+          <li>
+            <label for="apiCategory">apiCategory</label>
+          </li>
+          <li>
+            <select name="apiCategory" id="apiCategory" v-model="categoryFillter" @change="filter()">
+              <option :value="item.id" v-for="(item, index) in apiCategory" :key="index">{{ item.name }}</option>
+            </select>
+          </li>
+        </ul>
 
-    <select name="apiList" id="apiList" v-model="keyData.detail">
-      <option :value="{id:item.fillterid, title:item.title}" v-for="(item, index) in fltList" :key="index" >{{ item.title }}</option>
-    </select>
+        <ul>
+          <li>
+            <label for="apiList">apiList</label>
+          </li>
+          <li>
+            <select name="apiList" id="apiList" v-model="keyData.detail">
+              <option :value="{id:item.fillterid, title:item.title}" v-for="(item, index) in fltList" :key="index" >{{ item.title }}</option>
+            </select>
+          </li>
+        </ul>
+      </div>
 
-    <label for="keyInput">API KEY</label>
-    <input type="text" id="keyInput" v-model="keyData.key">
-    <label for="keyValue">Key 만료일</label>
-    <input type="date" id="keyValue" v-model="keyData.date">
+      <div class="profile_keyStorage--input">
+        <ul>
+          <li>
+            <label for="keyInput">API KEY</label>
+          </li>
+          <li>
+            <input type="text" id="keyInput" v-model="keyData.key" style="width:700px;">
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <label for="keyValue">Key 만료일</label>
+          </li>
+          <li>
+            <input type="date" id="keyValue" v-model="keyData.date" style="width:200px;">
+          </li>
+        </ul>
+      </div>
 
-    <fa-icon icon="plus" class="btn" @click="addAPIKey"> </fa-icon>
+      <fa-icon icon="plus" class="btn profile_keyStorage--icon" @click="addAPIKey"> </fa-icon>
 
+    </div>
     <div style="height: 280px;" >
       <table style="width: 100%;" v-if="paginatedData[0]">
         <tr style="font-size: 25px;">
           <th>Category</th>
           <th>API</th>
-          <th>Key</th>
+          <th style="width: 700px;">Key</th>
           <th>Date</th>
         <tr/>
         <tr v-for="(item, index) in paginatedData" :key="index" style="font-size: 20px;">
           <td>{{ apiCategory[item.detail.id].name }}</td>
           <td>{{ item.detail.title }}</td>
-          <td>{{ item.key }}</td>
+          <td style="overflow:auto ; max-width:700px;">{{ item.key }}</td>
           <td>{{ item.date }}</td>
-          <fa-icon icon="trash-alt"></fa-icon>
+          <fa-icon icon="trash-alt" class="btn" @click="deleteKey(index)"></fa-icon>
         </tr>
       </table>
     </div>
     <div style="height:20px;">
-    <div class="profile_pagenation" v-if="pageCount >= 2 ">
-      <span @click="paginationBtn(false)">prev</span>
-      <span v-for="(i, index) in pageCount" :key="index" :class="['pageBtn', {'pageBtn-hl': pageNum === index}]">{{ i }}</span>
-      <span @click="paginationBtn(true)">next</span>
+    <div class="profile_pagenation" v-if="pageCount >= 2">
+      <span @click="paginationBtn(false)" class="btn btn--md" :class="[{'btn--tertiary':pageNum === 0}, 'btn--primary']">prev</span>
+      <span v-for="(i, index) in pageCount" :key="index" class="btn" :class="['pageBtn', {'pageBtn-hl': pageNum === index}]" @click="paginationClick(i)">{{ i }}</span>
+      <span @click="paginationBtn(true)" class="btn btn--md" :class="[{'btn--tertiary':pageNum === pageCount-1}, 'btn--primary']">next</span>
     </div>
     </div>
 
@@ -138,6 +184,9 @@ computed: {
         this.pageNum--
       }
     },
+    paginationClick(i) {
+      this.pageNum = i-1
+    },
 
    filter() {
      if (this.categoryFillter === 0 ) {
@@ -146,13 +195,16 @@ computed: {
      this.fltList = this.ApiLists.filter(id => id.fillterid === this.categoryFillter)
    },
    addAPIKey() {
-     if (this.keyData.detail.id != "" && this.keyData.detail.title != "" && this.keyData.key != "" && this.keyData.date != "") {
+     if (this.keyData.detail.id != "" && this.keyData.detail.title != "" && this.keyData.key != "" ) {
       this.userKeyDataList.push(this.keyData)
       this.keyData = {detail:{}, key : "", date: ""}
      }
      else {
        alert("모든 값을 입력 하십시오.")
      }
+   },
+   deleteKey(index) {
+     this.userKeyDataList.splice(index, 1)
    }
  }
 }

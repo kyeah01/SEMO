@@ -1,3 +1,4 @@
+import store from '@/store'
 import axios from 'axios'
 const apiUrl = '/api'
 
@@ -7,6 +8,7 @@ export default {
             username: id,
             password: pw
         })
+        store.state.userData = {username : id}
         return data
     }
 }
