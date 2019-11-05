@@ -33,6 +33,8 @@
 import Sidebar from "@/components/sidebar"
 import APIListCard from "@/components/category/APIListCard"
 import APIDetail from "@/components/category/APIDetail"
+import APIDetailT from "@/components/category/DetailT/APIDetailT"
+import store from "@/store"
 
 export default {
   name: 'CategoryPage',
@@ -40,6 +42,7 @@ export default {
     Sidebar,
     APIListCard,
     APIDetail,
+    APIDetailT,
   },
   data() {
     return {
@@ -90,23 +93,30 @@ export default {
         {id: 16, title: 'FaceBook', fillterid: 6, img:require('@/assets/facebook.png'), tags:["Chat BOT","AI","무료"],body:"Facebook ChatBot AI"},
         {id: 7, title: 'IMDB', fillterid: 4, img:require('@/assets/imdb.png'), tags:["영화","movie","무료"],body:"영화 정보"},
         {id: 1, title: 'TMDB', fillterid: 4, img:require('@/assets/tmdb.png'), tags:["영화","movie","무료"],body:"영화 정보"},
-        {id: 41, title: '등록테스트', fillterid: 1, img:'', tags:["등록테스트"],body:"등록테스트"},
       ],
       categoryFilter : 0,
       categoryFilterName : "API LIST",
       apiLoad: false,
       apiId: '',
+      chkPostData : store.state.postData
     }
   },
-  computed: {
-
+  updated() {
+    this.chkPostData = store.state.postData
+  },
+  mounted() {
+    if (this.chkPostData === true) {
+      this.ApiLists.push({id: 41, title: '등록테스트', fillterid: 1, img:'http://toeic.ybmclass.com/toeic/img/noimage.gif', tags:["등록테스트"],body:"등록테스트"})
+    }
   },
   methods: {
     apiSelect(item) {
       this.apiId = item.id
       this.apiLoad = true
       window.scrollTo(0,0);
-      this.$router.push({ name: 'APIDetail', params: { apiId: this.apiId }})
+      if (item.id !== 41) {this.$router.push({ name: 'APIDetail', params: { apiId: this.apiId }})}
+      else {this.$router.push({ name: 'APIDetailT'})}
+
     },
     formFilter(id, name) {
       this.categoryFilterName = name

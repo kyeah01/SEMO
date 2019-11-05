@@ -13,12 +13,6 @@
         <img src="https://user-images.githubusercontent.com/45934087/68111269-13f85400-ff32-11e9-832b-4af68a2dd19a.png" alt="">
         <img src="https://user-images.githubusercontent.com/45934087/68112833-a51cfa00-ff35-11e9-9caa-d8a26bab4e79.png" alt="">
         <img src="https://user-images.githubusercontent.com/45934087/68112851-b108bc00-ff35-11e9-9960-3f7e0312f1d8.png" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
       </div>
 
     </div>
