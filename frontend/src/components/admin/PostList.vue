@@ -1,7 +1,8 @@
 <template>
 <div>
     <div class="test">
-      <h1>Admin Post</h1> <router-link :to="{ name: 'APIWrite' }" class="btn btn--success btn--xl">API 추가</router-link>
+      <h1>Admin Post <span class="test-subtext">{{ posts.length }} 개의 api</span></h1>
+      <router-link :to="{ name: 'APIWrite' }" class="btn btn--success btn--xl">API 추가</router-link>
     </div>
   <table>
     <thead>
@@ -65,7 +66,6 @@ export default {
     },
   },
   mounted() {
-    // this.posts = this.apiList
     this.posts = this.setApi()
   },
   methods: {
@@ -137,5 +137,9 @@ th, tr {
     color: $primary;
     border-bottom: 1px solid $primary;
   }
+}
+.test-subtext {
+  font-size: 16px;
+  color: gray;
 }
 </style>
