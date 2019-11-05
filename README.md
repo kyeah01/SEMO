@@ -1,28 +1,75 @@
 
 
-<h1 align="center">SEMO</h1><p align="center">
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/45934087/68111330-38ecc700-ff32-11e9-817e-57b39a66a24a.png"/>
+	<h1 align="center">SEMO</h1>
+    <p align="center">API Wiki Docs Page</p>
+</p>
 
-```
-API Wiki Docs Page
-```
+[TOC]
 
-![image](https://user-images.githubusercontent.com/45934087/68111330-38ecc700-ff32-11e9-817e-57b39a66a24a.png)
+# Project Description
 
-#### GitHub: [SEMO](<https://github.com/rngus3050/SEMO-API>)
+GitHub: <a href="https://github.com/kyeah01/SEMO">SEMO</a>
 
  **Simple & East Manual of API**(이하, SEMO)는 신임 개발자 및 개발자를 꿈꾸는 사람들을 위한 API Wiki Docs Service입니다. 유용한 API Site 의 사용법 및 API Test Service를 제공하여 개발자들의 학업 효율 및 생산성 향상을 위한 서비스를 구현하였습니다. 또한, API Key를 저장, 관리 할 수 있는 서비스를 제공함으로써 API 접근성과 생산성을 향상시키고자 하였습니다.
 
 ------
 
-#### 핵심 기술
 
-#### 다양한 유형의 API Site 정보 제공
 
-------
+# Getting Started
+
+## Prerequisites
+
+- `front` 폴더에서 npm 모듈을 install 합니다.
+
+  ```bash
+  $ npm install
+  ```
+
+- `backend` 폴더에서 pip 모듈을 setup합니다.
+
+  ```bash
+  $ pip install -r requirements.txt
+  ```
+
+
+
+## Database setup
+
+- deploy DB로는 `MySQL`을 활용했으나, test를 위한 DB로 `sqlite3`를 지원합니다.
+
+- model 작업을 위한 migrate가 필요합니다.
+  `backend` > `manage.py` 파일을 실행시킵니다.
+
+  ```bash
+  $ python manage.py migrate
+  ```
+
+- `backend` > `db.json` 파일을 load시킵니다.
+
+  ```bash
+  $ ./manage.py loaddata db.json
+  ```
+
+  
+
+# Description
+
+## 핵심기술
+
+### 다양한 유형의 API Site 정보 제공
+
+#### Main Page
 
 ![image](https://user-images.githubusercontent.com/45934087/68111269-13f85400-ff32-11e9-832b-4af68a2dd19a.png)
 
  국내  공공데이터에서부터 해외 유명 사이트까지 다양한 주제의 API 사이트를 주요 기능 및 Category별로 정렬하여 보다 간편하게 API에 접근 할 수 있도록 합니다. 
+
+
+
+#### Detail Page
 
 ![image](https://user-images.githubusercontent.com/45934087/68112833-a51cfa00-ff35-11e9-9caa-d8a26bab4e79.png)
 
@@ -48,7 +95,7 @@ API Wiki Docs Page
 
 ​						※ API Console Test를 통해 Movie Details에서 Response 받을 수 있는 데이터
 
-#### 사용자 참여형 Wiki Docs
+### 사용자 참여형 Wiki Docs
 
 ------
 
@@ -56,7 +103,7 @@ API Wiki Docs Page
 
  **SEMO**의 사용자는 자신이 주로 사용하는 **API 사이트**를 직접 SEMO에 등록 할 수 있으며, 이를 통해 사용자에게는 더욱 많은 편의를 SEMO에는 더욱 많은 데이터를 쌓을 수 있게 합니다.
 
-#### Log 분석을 통한 페이지 관리
+### Log 분석을 통한 페이지 관리
 
 ------
 
@@ -68,7 +115,7 @@ API Wiki Docs Page
 
 ​						※ 사용자가 등록 혹은 수정 요청한 게시물을 관리 할 수 있다.
 
-#### 프로필 페이지를 통한 나만의 API 관리
+### 프로필 페이지를 통한 나만의 API 관리
 
 ------
 
@@ -82,21 +129,34 @@ API Wiki Docs Page
 
 ------
 
-##### 사용 기술 및 도구
 
-- Django
-- Django REST FrameWork
-- yasg
-- Python
-- MySql
-- Apache Knox
-- VUE
-- SCSS
+
+## Model structure
+
+<img src="https://user-images.githubusercontent.com/45934061/68186307-2d0f0c80-ffe7-11e9-9754-5457ed8d6a43.png">
 
 
 
-### SEMO Project`s Developer
+
+
+#### 사용 기술 및 도구
+
+- Django (2.2.4)
+- Django REST Framework (3.10.2)
+- yasg (1.17.0)
+- python (3.6.8)
+- MySql (8.0.18)
+- django-rest-knox (4.1.0)
+- Vuex (3.1.1)
+- Vue.js (2.6.10)
+- SCSS (sass-loder : 8.0.0, node-sass: 4.12.0)
+- vue CLI (3.12.0)
+- virtualenv (16.7.7)
+
+
+
+#### SEMO Project`s Developer
 
 ------
 
-![image](https://user-images.githubusercontent.com/45934087/67922599-8bef1300-fbee-11e9-8fd9-c1712f3f2069.png) 	
+![image](https://user-images.githubusercontent.com/45934087/67922599-8bef1300-fbee-11e9-8fd9-c1712f3f2069.png) 
