@@ -6,21 +6,18 @@
     </div>
   </div>
   <div>
-    <GuideParams/>
-    <GuideRes/>
+    <GuideWrite/>
   </div>
 </div>
 </template>
 
 <script>
-import GuideParams from './guideComponents/GuideParams'
-import GuideRes from './guideComponents/GuideRes'
+import GuideWrite from './guideComponents/GuideWrite'
 
 export default {
   name: 'ApiWriteBottom',
   components: {
-    GuideParams,
-    GuideRes
+    GuideWrite,
   }
 }
 </script>

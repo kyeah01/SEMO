@@ -18,9 +18,9 @@
     <div class="detail-Table-left" v-if="!apiData.title.hold">
       <table v-for="(item, index) in apiData.tableTitle[0]" :key="index">
         <thead><h2>{{ item.title }}</h2></thead>
-        <tr v-if="index === 0"><textarea cols="68" rows="18" v-model="item.contents[0]" :placeholder="item.placeholder" style="resize: none;"></textarea></tr>
+        <tr v-if="index === 0"><textarea class="input-css" cols="68" rows="18" v-model="item.contents[0]" :placeholder="item.placeholder" style="resize: none;"></textarea></tr>
         <tr v-if="index === 1">
-          <li v-for="(i, index) in item.leng" :key="i"><input class="input-leftTable" type="text" v-model="item.contents[index]" :placeholder="item.placeholder"></li>
+          <li v-for="(i, index) in item.leng" :key="i"><input class="input-leftTable input-css" type="text" v-model="item.contents[index]" :placeholder="item.placeholder"></li>
           <fa-icon icon="plus" class="btn" style="top: 10px; left: 230px;" @click="plusTable(item)"></fa-icon>
         </tr>
       </table>
@@ -238,6 +238,13 @@ h2 {
     &::placeholder {
       font-size: 16px;
     }
+  }
+}
+.input-css {
+  border: {
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>
