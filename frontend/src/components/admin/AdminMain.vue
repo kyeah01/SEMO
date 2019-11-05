@@ -49,17 +49,22 @@
   <div class="adminMain">
     <!-- add -->
     <div v-for="i in 2" :key="i">
-      <table class="table-main">
+      <table class="table-main" style="min-height: 300px;">
 
         <thead>
-          <h3 v-if="i === 1">New API</h3>
-          <h3 v-if="i === 2">Edit API</h3>
+          <h3 v-if="i === 1">API List</h3>
+          <h3 v-if="i === 2">add request</h3>
           <tr>
             <th v-for="(name, index) in tableName" :key="index">{{ name }}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="i === 1">
           <tr v-for="(post, index) in posts" :key="index">
+            <th v-for="i in post" :key="i.id">{{ i }}</th>
+          </tr>
+        </tbody>
+        <tbody v-else>
+          <tr v-for="(post, index) in addPost" :key="index">
             <th v-for="i in post" :key="i.id">{{ i }}</th>
           </tr>
         </tbody>
@@ -71,7 +76,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+import moment from "moment"
 import BarChart from '@/components/BarChart'
+
 export default {
   name: 'AdminMainPage',
   components: {
@@ -81,30 +89,34 @@ export default {
     return {
       dataCnt: [
         { name: 'Users', count: 6, collection: { labels: [], data: [0, 0, 2, 3, 1, 0, 0]}, color: '#0090D9', icon: 'user-friends' },
-        { name: 'Add Post', count: 15, collection: { labels: [], data: [10, 1, 1, 1, 2, 0, 0]}, color: '#37A8AF', icon: 'calendar-plus' },
-        { name: 'Edit Post', count: 32, collection: { labels: [], data: [1, 10, 15, 8, 3, 11, 4]}, color: '#3E739D', icon: 'edit' },
+        { name: 'Add Post', count: 0, collection: { labels: [], data: [10, 1, 1, 1, 2, 0, 0]}, color: '#37A8AF', icon: 'calendar-plus' },
+        { name: 'Edit Post', count: 0, collection: { labels: [], data: [1, 10, 15, 8, 3, 11, 4]}, color: '#3E739D', icon: 'edit' },
         { name: 'Requests', count: 784, collection: { labels: [], data: [302, 123, 83, 97, 65, 110, 435]}, color: '#f56954', icon: 'project-diagram' },
       ],
       tableName: ['API ID', '제목', '등록일자', '카테고리', '수정요청'],
-      posts: [
-        { id: 1, title: '오타수정', date: '191020', category: '교통', edit: true },
-        { id: 2, title: '오타수정', date: '191021', category: '지도', edit: true },
-        { id: 3, title: '오타수정', date: '191021', category: '공공데이터', edit: true },
-        { id: 1, title: '업데이트', date: '191022', category: '교통', edit: true },
-        { id: 4, title: '업데이트', date: '191023', category: '사진', edit: true },
+      posts: [],
+      addPost: [
+        { id: 41, title: '등록테스트', date: moment(new Date()).format('YYMMDD'), category: '공공데이터', edit: "요청대기중" },
       ],
       userActive: [
         { id: 'user1', activity: 'create api', date: '191029'},
         { id: 'user2', activity: 'create api', date: '191030'},
-        { id: 'user5', activity: 'sign in', date: '191031'},
-        { id: 'user6', activity: 'edit api', date: '191101'},
+        { id: 'SEMO', activity: 'create api', date: moment(new Date()).format('YYMMDD')},
+        { id: 'SEMO', activity: 'sign in', date: moment(new Date()).format('YYMMDD')},
       ],
       userImg : require('@/assets/userimg.png'),
       chartData: { data: [302, 123, 83, 97, 65, 110, 435], color: '#f56954' },
     }
   },
+  computed: {
+    ...mapGetters({
+      apiList: 'getApiLists'
+    }),
+  },
   mounted() {
+    this.posts = this.setApi()
     this.userActive.sort(( a, b ) => { return b.date - a.date })
+    this.dataCnt[1].count = this.addPost.length
   },
   methods: {
     chartChange(item) {
@@ -113,7 +125,18 @@ export default {
     },
     goApiList() {
       this.$router.push({ name: 'API List' })
-    }
+    },
+    setApi() {
+      const apis = this.apiList.map( d => ({
+        id: d.id,
+        title: d.title,
+        date: '191105',
+        category: d.tags[0],
+        edit: '수락'
+      }))
+      apis.sort((a, b) => { return a.id - b.id })
+      return apis.slice(apis.length-5, apis.length).reverse()
+    },
   }
 }
 </script>

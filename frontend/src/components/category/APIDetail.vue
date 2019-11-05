@@ -11,28 +11,33 @@
 
   <div class="apiDetail">
     <div class="listDetail-content">
+
       <div v-show="loadSpinner" class="lds-detail">
         <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       </div>
+
       <div class="listDetail">
-        <fa-icon icon="times" @click="goList" style="z-index: 2;"></fa-icon>
         <APIDetailTop/>
       </div>
+
       <div class="listDetail">
         <APIDetailMiddle/>
       </div>
-      <div class="listDetail listDetail-guide">
 
+      <div class="listDetail listDetail-guide">
         <APIDetailBottom/>
       </div>
+
     </div>
     <div class="listDetail-ad">
-      <!-- <div v-for="item in apiRecommend" :key="item">
-        <APIListCard/>
-      </div> -->
     </div>
   </div>
+  <div>
+    <div class="btn btn-save btn-save-2 btn--primary" @click="goList">
+      <fa-icon icon="angle-left" style="z-index: 2;"></fa-icon>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -95,6 +100,19 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.btn {
+  &-save {
+    position: fixed;
+    bottom: 50px;
+    right: 75px;
+    font-size: 50px;
+    &-1 {
+      right: 150px;
+    }
+    &-2 {
+      width: 42px;
+    }
+  }
+}
 </style>
