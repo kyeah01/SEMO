@@ -11,14 +11,10 @@
 
   <div class="apiDetail">
     <div class="listDetail-content">
-      <div v-show="loadSpinner" class="lds-detail">
-        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      </div>
-      <div class="listDetail">
-        <fa-icon icon="times" @click="goList" style="z-index: 2;"></fa-icon>
+      <div class="listDetail listDetail-guide">
         <APIDetailTop/>
       </div>
-      <div class="listDetail">
+      <div class="listDetail listDetail-tall">
         <APIDetailMiddle/>
       </div>
       <div class="listDetail listDetail-guide">
@@ -27,7 +23,24 @@
       </div>
     </div>
   </div>
+  <div>
 
+    <div class="btn btn-save btn-save-1 btn--success"
+      @mouseover="save_hover = true"
+      @mouseout="save_hover = false"
+      @click="load_save"
+      >
+      <fa-icon v-if="!save_hover" :icon="['far', 'save']" style="z-index: 2;"></fa-icon>
+      <fa-icon v-else icon="save" style="z-index: 2;"></fa-icon>
+    </div>
+
+    <div class="btn btn-save btn-save-2 btn--primary" @click="goList">
+      <fa-icon icon="angle-left" style="z-index: 2;"></fa-icon>
+    </div>
+  </div>
+  <div v-show="loadSpinner" class="lds-detail">
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
 </div>
 </template>
 
@@ -47,7 +60,8 @@ export default {
   },
   data: () => {
     return {
-      loadSpinner: true,
+      loadSpinner: false,
+      save_hover: false,
       sideBarItems : [
         {title : 'New API'},
         {subtitle : ''},
@@ -60,35 +74,45 @@ export default {
       ],
     }
   },
-  watch: {
-    loadSpinner() {
-      if (this.loadSpinner) {
-        document.body.style.overflowY = 'hidden'
-      }
-      document.body.style.overflowY = 'auto'
-    }
-  },
   mounted() {
     document.body.style.overflowX = 'hidden'
-    document.body.style.overflowY = 'hidden'
-    this.loadData()
+    document.body.style.overflowY = 'auto'
   },
   methods: {
     goList() {
       this.$router.go(-1)
       this.$emit('goList')
     },
-    loadData() {
+    load_save() {
+      this.loadSpinner = true
       setTimeout(() => {
         this.loadSpinner = false
-      }, 1000);
+      }, 1500)
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
-.listDetail {
-  min-height: 30%;
+<style lang="scss" scoped>
+.btn {
+  &-save {
+    position: fixed;
+    bottom: 50px;
+    right: 75px;
+    font-size: 50px;
+    &-1 {
+      right: 150px;
+    }
+    &-2 {
+      width: 42px;
+    }
+  }
+}
+.lds-detail {
+  z-index: 5;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
 }
 </style>

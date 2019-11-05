@@ -1,7 +1,7 @@
 <template>
 <div>
   <div>
-    <h2>1. EndPoint</h2>
+    <h2>EndPoint</h2>
   </div>
   <div class="Guide-ep-content">
     <!-- 왼쪽 테이블 -->
@@ -13,6 +13,26 @@
       </thead>
       <tbody>
         <tr v-for="(item, index) in endPoint" :key="index">
+          <th class="select-Ep">
+            <h3>
+              <span class="btn"
+                :class="{'btn--success' : item.methods == 'POST', 'btn--primary' : item.methods == 'GET' , 'btn--danger' : item.methods == 'DELETE', 'btn--warning' : item.methods == 'PUT'  }"
+                @click="switchMethods(index)">
+                {{ item.methods }}
+              </span>
+              <br>
+              <!-- {{ item.contents }} -->
+              <input class="params-ep" type="text" v-model="item.contents" :placeholder="item.ph">
+            </h3>
+          </th>
+        </tr>
+        <tr>
+          <fa-icon icon="plus" class="btn" style="font-size: 30px; left: 65px;" @click="plusTable"></fa-icon>
+        </tr>
+      </tbody>
+      <!-- default -->
+      <!-- <tbody>
+        <tr v-for="(item, index) in endPoint" :key="index">
           <th :class="[{ 'select-Ep-act' : is_activeEp === index }, 'select-Ep']" @click="epSelect(index)">
             <h3>
               <span class="btn" :class="{'btn--success' : item.methods == 'POST', 'btn--primary' : item.methods == 'GET' , 'btn--danger' : item.methods == 'DELETE', 'btn--warning' : item.methods == 'PUT'  }">{{ item.methods }}</span>
@@ -21,7 +41,7 @@
             </h3>
           </th>
         </tr>
-      </tbody>
+      </tbody> -->
     </table>
     <!-- 오른쪽 테이블 -->
     <table class="Guide-ep-subTable">
@@ -72,12 +92,12 @@ export default {
   data: () => {
     return {
       // props
+      ep: [
+        'GET', 'POST', 'DELETE', 'PUT', 'PATCH'
+      ],
       endPoint: [
-        {methods: 'GET', contents: "Get Images"},
-        {methods: 'GET', contents: "Get Details"},
-        {methods: 'POST', contents: "Rate Monie"},
-        {methods: 'DELETE', contents: "Delete Rating"},
-        ],
+        {methods: 'GET', contents: "", ph: "ENDPOINP", methods_index: 0},
+      ],
       // 고정값
       lang: [
         {
@@ -130,6 +150,18 @@ export default {
       if (id === this.is_activeLang) {return}
       this.is_activeLang = id
       this.displayCode = this.lang[id].code
+    },
+    switchMethods(id) {
+      if ( this.endPoint[id].methods_index + 1 !== this.ep.length ) {
+        this.endPoint[id].methods_index += 1
+        this.endPoint[id].methods = this.ep[this.endPoint[id].methods_index]
+      } else {
+        this.endPoint[id].methods_index = 0
+        this.endPoint[id].methods = this.ep[0]
+      }
+    },
+    plusTable() {
+      this.endPoint.push({methods: 'GET', contents: "", ph: "ENDPOINP", methods_index: 0})
     }
   }
 }
@@ -171,6 +203,22 @@ export default {
       border-bottom: 4px solid $primary;
       color: $primary
     }
+  }
+}
+
+.params {
+  &-ep {
+    border: {
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    padding: {
+      left: 8px;
+    }
+    line-height: 25px;
+    font-size: 16px;
+    width: 160px;
   }
 }
 </style>
