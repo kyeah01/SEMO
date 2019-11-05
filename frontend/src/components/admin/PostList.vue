@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 import router from '@/router'
 
 export default {
@@ -46,32 +48,13 @@ export default {
       pageNum: 0,
       checkedPost: [],
       allSelect: false,
-      posts: [
-        { id: 1, title: '대중교통 API', date: '191020', category: '대중교통', edit: "수락" },
-        { id: 2, title: '대중교통 API', date: '191021', category: '대중교통', edit: "거절" },
-        { id: 3, title: '서울 의료원', date: '191021', category: '공공데이터', edit: "수락" },
-        { id: 1, title: '대중교통 API', date: '191022', category: '대중교통', edit: "거절" },
-        { id: 4, title: 'Sony 카메라', date: '191023', category: '사진', edit: "수락" },
-        { id: 5, title: 'Facebook', date: '191024', category: '미디어', edit: "수락" },
-        { id: 5, title: 'Facebook', date: '191024', category: '미디어', edit: "수락" },
-        { id: 6, title: '오타수정', date: '191020', category: '대중교통', edit: "수락" },
-        { id: 7, title: '오타수정', date: '191021', category: '대중교통', edit: "수락" },
-        { id: 8, title: '오타수정', date: '191021', category: '공공데이터', edit: "수락" },
-        { id: 9, title: '업데이트', date: '191022', category: '대중교통', edit: "수락" },
-        { id: 10, title: '업데이트', date: '191023', category: '사진', edit: "수락" },
-        { id: 11, title: '오타수정', date: '191024', category: '미디어', edit: "수락" },
-        { id: 32, title: '업데이트', date: '191024', category: '미디어', edit: "수락" },
-        { id: 11, title: '오타수정', date: '191020', category: '대중교통', edit: "수락" },
-        { id: 11, title: '오타수정', date: '191021', category: '대중교통', edit: "수락" },
-        { id: 31, title: '오타수정', date: '191021', category: '공공데이터', edit: "수락" },
-        { id: 11, title: '업데이트', date: '191022', category: '대중교통', edit: "수락" },
-        { id: 41, title: '업데이트', date: '191023', category: '사진', edit: "수락" },
-        { id: 51, title: '오타수정', date: '191024', category: '미디어', edit: "수락" },
-        { id: 51, title: '업데이트', date: '191024', category: '미디어', edit: "수락" },
-      ]
+      posts: []
     }
   },
   computed: {
+    ...mapGetters({
+      apiList: 'getApiLists'
+    }),
     pageCount () {
       let listLeng = this.posts.length, listSize = this.pageSize, page = Math.floor((listLeng - 1) / listSize) + 1
       return page
@@ -79,7 +62,11 @@ export default {
     paginatedData () {
       const start = this.pageNum * this.pageSize, end = start + this.pageSize;
       return this.posts.slice(start, end)
-    }
+    },
+  },
+  mounted() {
+    // this.posts = this.apiList
+    this.posts = this.setApi()
   },
   methods: {
     paginationBtn (bool) {
@@ -108,7 +95,22 @@ export default {
       } else {
         this.allSelect = false
       }
-    }
+    },
+    setApi() {
+      const apis = this.apiList.map( d => ({
+        id: d.id,
+        title: d.title,
+        date: '191105',
+        category: d.tags[0],
+        edit: '수락'
+      }))
+      apis.sort((a, b) => { return b.id - a.id })
+      return apis
+    },
+    test() {
+      console.log({ id: 41, title: '대중교통 API', date: '191020', category: '대중교통', edit: "수락" })
+    },
+
   }
 }
 </script>

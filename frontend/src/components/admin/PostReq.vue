@@ -1,7 +1,11 @@
 <template>
 <div>
     <div class="test">
-      <h1>API add request</h1> <router-link :to="{ name: 'APIWrite' }" class="btn btn--success btn--xl">API 추가</router-link>
+      <h1>API add request</h1>
+      <div>
+        <span class="btn btn--success btn--xl" @click="dinedAPI(false)">API 수락</span>
+        <span class="btn btn--danger btn--xl" @click="dinedAPI(true)">API 거절</span>
+      </div>
     </div>
   <table>
     <thead>
@@ -29,7 +33,7 @@
 </template>
 
 <script>
-import router from '@/router'
+import moment from "moment"
 
 export default {
   name: 'PostReq',
@@ -47,7 +51,7 @@ export default {
       checkedPost: [],
       allSelect: false,
       posts: [
-        { id: 1, title: '대중교통 API', date: '191020', category: '대중교통', edit: "수락" },
+        { id: 41, title: '등록테스트', date: moment(new Date()).format('YYMMDD'), category: '공공데이터', edit: "요청대기중" },
       ]
     }
   },
@@ -87,6 +91,14 @@ export default {
         }
       } else {
         this.allSelect = false
+      }
+    },
+    dinedAPI(bool) {
+      if (bool) {
+        this.posts = []
+      } else {
+        this.$store.commit('setNewApi', this.posts[0])
+        this.posts = []
       }
     }
   }
