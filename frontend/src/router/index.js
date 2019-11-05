@@ -13,6 +13,7 @@ import JournalPage from '@/views/JournalPage'
 import AdminPage from '@/views/AdminPage'
 import AdminMain from '@/components/admin/AdminMain'
 import AdminPost from '@/components/admin/PostList'
+import AdminReq from '@/components/admin/PostReq'
 
 import APIWrite from '@/components/admin/post/APIWrite'
 
@@ -35,8 +36,9 @@ const router = new VueRouter({
       {
         path: '/admin', component: AdminPage, name: 'Admin',
         children: [
-          { path: 'main', component: AdminMain, name: 'AdminMain'},
-          { path: 'posts', component: AdminPost, name: 'AdminPost'},
+          { path: 'main', component: AdminMain, name: 'Main'},
+          { path: 'posts', component: AdminPost, name: 'API List'},
+          { path: 'requests', component: AdminReq, name: 'API Req'},
         ]
       },
     ],

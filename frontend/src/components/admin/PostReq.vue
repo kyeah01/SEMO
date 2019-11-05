@@ -1,7 +1,11 @@
 <template>
 <div>
     <div class="test">
-      <h1>Admin Post</h1> <router-link :to="{ name: 'APIWrite' }" class="btn btn--success btn--xl">API 추가</router-link>
+      <h1>API add request</h1>
+      <div>
+        <span class="btn btn--success btn--xl" @click="dinedAPI(false)">API 수락</span>
+        <span class="btn btn--danger btn--xl" @click="dinedAPI(true)">API 거절</span>
+      </div>
     </div>
   <table>
     <thead>
@@ -29,12 +33,10 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
-
-import router from '@/router'
+import moment from "moment"
 
 export default {
-  name: 'PostList',
+  name: 'PostReq',
   props: {
     pageSize: {
       type: Number,
@@ -48,13 +50,12 @@ export default {
       pageNum: 0,
       checkedPost: [],
       allSelect: false,
-      posts: []
+      posts: [
+        { id: 41, title: '등록테스트', date: moment(new Date()).format('YYMMDD'), category: '공공데이터', edit: "요청대기중" },
+      ]
     }
   },
   computed: {
-    ...mapGetters({
-      apiList: 'getApiLists'
-    }),
     pageCount () {
       let listLeng = this.posts.length, listSize = this.pageSize, page = Math.floor((listLeng - 1) / listSize) + 1
       return page
@@ -62,11 +63,7 @@ export default {
     paginatedData () {
       const start = this.pageNum * this.pageSize, end = start + this.pageSize;
       return this.posts.slice(start, end)
-    },
-  },
-  mounted() {
-    // this.posts = this.apiList
-    this.posts = this.setApi()
+    }
   },
   methods: {
     paginationBtn (bool) {
@@ -96,21 +93,14 @@ export default {
         this.allSelect = false
       }
     },
-    setApi() {
-      const apis = this.apiList.map( d => ({
-        id: d.id,
-        title: d.title,
-        date: '191105',
-        category: d.tags[0],
-        edit: '수락'
-      }))
-      apis.sort((a, b) => { return b.id - a.id })
-      return apis
-    },
-    test() {
-      console.log({ id: 41, title: '대중교통 API', date: '191020', category: '대중교통', edit: "수락" })
-    },
-
+    dinedAPI(bool) {
+      if (bool) {
+        this.posts = []
+      } else {
+        this.$store.commit('setNewApi', this.posts[0])
+        this.posts = []
+      }
+    }
   }
 }
 </script>

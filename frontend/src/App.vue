@@ -32,7 +32,7 @@
 </template>
 
 <script>
-
+import { mapActions } from "vuex"
 import router from "@/router";
 import api from "./api";
 import store from "@/store";
@@ -51,7 +51,11 @@ export default {
   updated() {
     this.userData = store.state.userData
   },
+  mounted() {
+    this.searchApis()
+  },
   methods: {
+    ...mapActions(["searchApis"]),
     login() {
       this.name = ''
       this.pw = ''

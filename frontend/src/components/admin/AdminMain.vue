@@ -100,11 +100,10 @@ export default {
         { id: 'user6', activity: 'edit api', date: '191101'},
       ],
       userImg : require('@/assets/userimg.png'),
-      chartData: {},
+      chartData: { data: [302, 123, 83, 97, 65, 110, 435], color: '#f56954' },
     }
   },
   mounted() {
-    this.chartData = { data: [40, 20, 30, 50, 90, 10, 20], color: '#f56954'}
     this.userActive.sort(( a, b ) => { return b.date - a.date })
   },
   methods: {
@@ -113,7 +112,7 @@ export default {
       this.chartData.collection = item.collection
     },
     goApiList() {
-      this.$router.push({ name: 'AdminPost' })
+      this.$router.push({ name: 'API List' })
     }
   }
 }
