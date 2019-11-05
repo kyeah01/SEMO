@@ -14,8 +14,6 @@ GitHub: <a href="https://github.com/kyeah01/SEMO">SEMO</a>
 
  **Simple & East Manual of API**(이하, SEMO)는 신임 개발자 및 개발자를 꿈꾸는 사람들을 위한 API Wiki Docs Service입니다. 유용한 API Site 의 사용법 및 API Test Service를 제공하여 개발자들의 학업 효율 및 생산성 향상을 위한 서비스를 구현하였습니다. 또한, API Key를 저장, 관리 할 수 있는 서비스를 제공함으로써 API 접근성과 생산성을 향상시키고자 하였습니다.
 
-------
-
 
 
 # Getting Started
