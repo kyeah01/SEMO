@@ -6,6 +6,7 @@ import IntroducePage from '@/views/IntroducePage'
 // categiry
 import CategoryPage from '@/views/CategoryPage'
 import APIDetail from '@/components/category/APIDetail'
+import APIDetailT from '@/components/category/DetailT/APIDetailT'
 
 import JournalPage from '@/views/JournalPage'
 // admin
@@ -27,6 +28,7 @@ const router = new VueRouter({
       { path: '/semo', component: IntroducePage, name: 'Introduce' },
       { path: '/category', component: CategoryPage, name: 'Category' },
       { path: '/category/:apiId', component: APIDetail, name: 'APIDetail' },
+      { path: '/category/41', component: APIDetailT, name: 'APIDetailT' },
       { path: '/category/write', component: APIWrite, name: 'APIWrite' },
       { path: '/journal', component: JournalPage, name: 'Journal' },
       { path: '/profile', component: ProfilePage, name: 'ProfilePage' },

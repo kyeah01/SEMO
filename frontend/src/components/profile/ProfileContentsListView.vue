@@ -41,7 +41,7 @@ export default {
   },
   mounted() {
     if (this.chkPostData === true) {
-      this.ApiLists.push({id: 2, title: '등록테스트', fillterid: 4, img:'http://toeic.ybmclass.com/toeic/img/noimage.gif', tags:["영화","movie","무료"],body:"영화 정보"})
+      this.ApiLists.push({id: 41, title: '등록테스트', fillterid: 1, img:'http://toeic.ybmclass.com/toeic/img/noimage.gif', tags:["영화","movie","무료"],body:"영화 정보"})
     }
   },
 }
